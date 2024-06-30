@@ -1,9 +1,19 @@
 {
     "name": "brunocfalcao/nidavellir",
-    "type": "project",
     "description": "Nidavellir crypto-trading platform",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "brunocfalcao"
+    ],
+    "homepage": "https://github.com/brunocfalcao/nidavellir",
     "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Bruno Falcão",
+            "email": "bruno.c.falcao@brunofalcao.me",
+            "role": "Developer"
+        }
+    ],
     "repositories": [
         {
             "type": "path",
