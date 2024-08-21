@@ -21,3 +21,4 @@ yarn-error.log
 packages
 public/*
 packages
+php-cs-*.*
