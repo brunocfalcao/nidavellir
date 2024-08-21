@@ -25,9 +25,11 @@
     ],
     "require": {
         "php": "^8.2",
+        "brunocfalcao/nidavellir-backend": "dev-master",
         "brunocfalcao/nidavellir-trading": "*",
+        "brunocfalcao/nidavellir-website": "*",
         "laravel/framework": "^11.9",
-        "nelexa/zip": "^4.0",
+        "laravel/ui": "^4.5",
         "predis/predis": "^2.2"
     },
     "require-dev": {

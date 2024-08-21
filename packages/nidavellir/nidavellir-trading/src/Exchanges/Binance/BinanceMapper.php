@@ -64,4 +64,29 @@ class BinanceMapper extends AbstractMapper
 
         return $sanitizedData;
     }
+
+    /**
+     * Places an order on the system, via REST api call.
+     * string $symbol, string $side, string $type, array $options = []
+     * ['symbol-currency'=> '', (SOL-USDT)
+     *  'side' => '', BUY/SELL
+     *  'type' => '' MARKET/LIMIT,
+     *  'quantity' => 500 (USDT),
+     *  'price' => 45.56 (USDT)
+     */
+    public function newOrder(array $options)
+    {
+        $connection = new Futures($this->credentialsForFutures());
+
+        if (! array_key_exists('timeInForce', $options)) {
+            $options['timeinforce'] = 'GTC';
+        }
+
+        return $connection->newOrder(
+            symbol: $options['symbol'],
+            side: $options['side'],
+            type: $options['type'],
+            options: $options
+        );
+    }
 }

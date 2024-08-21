@@ -3,13 +3,16 @@
 namespace Nidavellir\Trading\Commands\System;
 
 use Illuminate\Console\Command;
-use Nidavellir\Trading\Exchanges\Binance\BinanceMapper;
-use Nidavellir\Trading\Exchanges\ExchangeRESTMapper;
+use Illuminate\Support\Facades\DB;
+use Nidavellir\Trading\Models\Symbol;
 use Nidavellir\Trading\Models\Trader;
+use Nidavellir\Trading\Models\Exchange;
+use Nidavellir\Trading\Models\ExchangeSymbol;
+use Nidavellir\Trading\Jobs\Symbols\UpsertElligibleSymbolsJob;
 
 class TestCommand extends Command
 {
-    protected $signature = 'trading:test';
+    protected $signature = 'nidavellir:test';
 
     protected $description = 'Just a test command';
 
@@ -20,10 +23,24 @@ class TestCommand extends Command
 
     public function handle()
     {
-        $exchangeMapper = new ExchangeRESTMapper(
-            new BinanceMapper(Trader::find(1)),
-        );
+        /*
+        DB::table('positions')->truncate();
 
-        dd($exchangeMapper->getExchangeInformation());
+        $symbol = Symbol::firstWhere('token', 'SOL');
+        $exchange = Exchange::find(1);
+
+        $exchangeSymbol = ExchangeSymbol::where('exchange_id', $exchange->id)
+            ->where('symbol_id', $symbol->id)
+            ->first();
+
+        // Open position.
+        Trader::find(1)->positions()->create([
+            'exchange_symbol_id' => $exchangeSymbol->id,
+        ]);
+        */
+
+        UpsertElligibleSymbolsJob::dispatch();
+
+        $this->info('All good.');
     }
 }

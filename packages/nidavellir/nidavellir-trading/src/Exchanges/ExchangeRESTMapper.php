@@ -29,4 +29,9 @@ class ExchangeRESTMapper
     {
         return $this->mapper->getExchangeInformation($options);
     }
+
+    public function placeSingleOrder(array $options)
+    {
+        return $this->mapper->newOrder($options);
+    }
 }
