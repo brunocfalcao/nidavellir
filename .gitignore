@@ -20,5 +20,5 @@ yarn-error.log
 /.vscode
 packages
 public/*
-packages
+packages/*
 php-cs-*.*
