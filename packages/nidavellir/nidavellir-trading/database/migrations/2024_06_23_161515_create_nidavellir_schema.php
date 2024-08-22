@@ -12,6 +12,34 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('available_balances', function (Blueprint $table) {
+            $table->id();
+
+            $table->foreignId('trader_id');
+            $table->foreignId('exchange_symbol_id');
+            $table->decimal('balance,20,8')
+                ->comment('We just store the positive available balance');
+
+            $table->timestamps();
+        });
+
+        Schema::create('system', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedTinyInteger('fear_greed_index')
+                ->default(0)
+                ->comment('Updated daily, so nidavellir knows what trade configuration should be used');
+
+            $table->timestamp('fear_greed_index_updated_at')
+                ->default(now())
+                ->comment('Last F&G update date');
+
+            $table->unsignedTinyInteger('fear_greed_index_threshold')
+                ->comment('F&G threshold to change from bearish trading configuration to bullish trading configuration, or vice-versa');
+
+            $table->timestamps();
+        });
+
         Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
 
@@ -29,7 +57,6 @@ return new class extends Migration
                 ->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
         });
 
         Schema::create('symbols', function (Blueprint $table) {
@@ -58,7 +85,6 @@ return new class extends Migration
                 ->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
         });
 
         Schema::create('exchange_symbol', function (Blueprint $table) {
@@ -78,7 +104,6 @@ return new class extends Migration
                 ->default(true);
 
             $table->timestamp('last_synced_at')->nullable();
-            $table->timestamps();
         });
 
         Schema::table('users', function (Blueprint $table) {
@@ -116,8 +141,8 @@ return new class extends Migration
                 ->nullable()
                 ->after('email');
 
-            $table->string('exchange_in_use')
-                ->default('binance');
+            $table->foreignId('exchange_id')
+                ->nullable();
 
             $table->text('binance_api_key')
                 ->nullable();
@@ -217,8 +242,6 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('trader_id');
-
-            $table->foreignId('exchange_symbol_id');
 
             $table->decimal('average_price', 15, 8)
                 ->nullable()

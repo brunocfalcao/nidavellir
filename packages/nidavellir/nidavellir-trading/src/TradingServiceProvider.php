@@ -2,15 +2,15 @@
 
 namespace Nidavellir\Trading;
 
+use Brunocfalcao\LaravelHelpers\Traits\ForServiceProviders\HasAutoLoaders;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Nidavellir\Trading\Commands\System\TestCommand;
 use Nidavellir\Trading\Commands\System\CycleCommand;
-use Nidavellir\Trading\Listeners\Traders\LoggedInListener;
+use Nidavellir\Trading\Commands\System\TestCommand;
 use Nidavellir\Trading\Events\Positions\PositionCreatedEvent;
 use Nidavellir\Trading\Listeners\Positions\PositionCreatedListener;
-use Brunocfalcao\LaravelHelpers\Traits\ForServiceProviders\HasAutoLoaders;
+use Nidavellir\Trading\Listeners\Traders\LoggedInListener;
 
 class TradingServiceProvider extends ServiceProvider
 {

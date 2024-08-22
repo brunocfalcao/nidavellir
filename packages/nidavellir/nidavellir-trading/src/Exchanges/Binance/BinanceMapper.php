@@ -66,6 +66,33 @@ class BinanceMapper extends AbstractMapper
     }
 
     /**
+     * Returns the Futures account balance, only for the
+     * ones that are not zero.
+     *
+     * Return:
+     * ['ETH' => 6.24,
+     *  'USDT' => 330.11]
+     */
+    public function queryAccountBalance()
+    {
+        $futures = new Futures($this->credentialsForFutures());
+        $portfolio = $futures->queryAccountBalance();
+
+        // Remove zero balances, and keep only the others.
+        $filteredPortfolio = array_filter($portfolio, function ($item) {
+            return (float) $item['availableBalance'] !== 0.0;
+        });
+
+        // Map the result.
+        $result = [];
+        foreach ($filteredPortfolio as $item) {
+            $result[$item['asset']] = (float) $item['availableBalance'];
+        }
+
+        return $result;
+    }
+
+    /**
      * Places an order on the system, via REST api call.
      * string $symbol, string $side, string $type, array $options = []
      * ['symbol-currency'=> '', (SOL-USDT)

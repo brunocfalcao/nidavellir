@@ -2,43 +2,6 @@
 
 return [
 
-    'global' => [
-
-        /**
-         * Percentage on the F&G index that will make nidavellir
-         * open one less order, making the trade more profitable
-         * but more dangerous for liquidation.
-         *
-         * At the moment not being used.
-         */
-        'fear_greed'=> [
-
-            /**
-             * F&G threshold where we consider a "greed" or
-             * a "fear" DCA trading configuration.
-             */
-            'threshold' => 85,
-
-            /**
-             * On Fear trading configuration for bearish
-             * market trend.
-             */
-            'on_fear' => [
-                'trades' => 5,
-                'take_profit_percentage' => 0.31
-            ],
-
-            /**
-             * On Greed trading configuration for bullish
-             * market trend.
-             */
-            'on_greed' => [
-                'trades' => 4,
-                'take_profit_percentage' => 0.33
-            ]
-        ]
-    ],
-
     'symbols' => [
 
         /**
@@ -63,7 +26,7 @@ return [
              * disabled.
              */
             'min_rank' => 20,
-        ]
+        ],
     ],
 
     'positions' => [
@@ -102,22 +65,66 @@ return [
          * market order mark price. As example, if you have a
          * 7.31, then nidavellir will open a limit order 7.31%
          * distanced from the market order mark price. Each
-         * entry will be a new order created.
+         * entry will be a new order created. In bearish
+         * and in bullish trends.
          */
-        'percentage_ratios' => [
-            0,
-            7.31,
-            14.83,
-            22.34,
-            29.86,
+        'bearish' => [
+            /**
+             * Total entry limit orders to open. 5 for instance
+             * is safer than 4.
+             */
+            'num_orders' => 5,
+
+            /**
+             * What's the percentage ratios. How much should
+             * the order decrease compared to the mark price.
+             * Each order will decrease to allow the laddered
+             * DCA to work.
+             */
+            'percentage_ratios' => [
+                0,
+                7.31,
+                14.83,
+                22.34,
+                29.86,
+            ],
+
+            /**
+             * Amount scale is the amount "n-plication" for each new
+             * entry order. For instance, if we have amount scale=2
+             * and 3 orders, and the order size will be 180, then
+             * the first order will be 30,60,90.
+             */
+            'amount_scale' => 2,
         ],
 
-        /**
-         * Amount scale is the amount "n-plication" for each new
-         * entry order. For instance, if we have amount scale=2
-         * and 3 orders, and the order size will be 180, then
-         * the first order will be 30,60,90.
-         */
-        'amount_scale' => 2,
+        'bullish' => [
+            /**
+             * Total entry limit orders to open. 5 for instance
+             * is safer than 4.
+             */
+            'num_orders' => 5,
+
+            /**
+             * What's the percentage ratios. How much should
+             * the order decrease compared to the mark price.
+             * Each order will decrease to allow the laddered
+             * DCA to work.
+             */
+            'percentage_ratios' => [
+                0,
+                7.31,
+                14.83,
+                22.34,
+            ],
+
+            /**
+             * Amount scale is the amount "n-plication" for each new
+             * entry order. For instance, if we have amount scale=2
+             * and 3 orders, and the order size will be 180, then
+             * the first order will be 30,60,90.
+             */
+            'amount_scale' => 2,
+        ],
     ],
 ];
