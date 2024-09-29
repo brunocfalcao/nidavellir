@@ -1,11 +1,24 @@
 <?php
 
-/*
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
-Auth::routes();
+Route::get('/export-log', function () {
+    $logFile = storage_path('logs/laravel.log');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-*/
+    if (!file_exists($logFile)) {
+        return response()->json(['error' => 'Log file not found'], 404);
+    }
+
+    return new StreamedResponse(function () use ($logFile) {
+        $handle = fopen($logFile, 'rb');
+        while (!feof($handle)) {
+            echo fread($handle, 1024);
+            flush();
+        }
+        fclose($handle);
+    }, 200, [
+        'Content-Type' => 'text/plain',
+        'Content-Disposition' => 'attachment; filename="laravel.log"',
+    ]);
+});
