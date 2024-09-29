@@ -1,11 +1,13 @@
 <?php
 
-use Nidavellir\Trading\Models\ExceptionLog;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
-use Nidavellir\Trading\Abstracts\AbstractException;
 use Illuminate\Foundation\Application;
+use Nidavellir\Trading\JobPollerManager;
+use Illuminate\Console\Scheduling\Schedule;
+use Nidavellir\Trading\Models\ExceptionLog;
 use Illuminate\Foundation\Configuration\Exceptions;
+use Nidavellir\Trading\Abstracts\AbstractException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
@@ -17,4 +19,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->report(function (\Exception $e) {
             logExceptionChain($e);
         })->stop();
-    })->create();
+    })
+    ->withSchedule(function (Schedule $schedule) {
+        $schedule->call(function () {
+            $jobPollerManager = new JobPollerManager;
+            $jobPollerManager->handle();
+        })
+        ->everySecond();
+    })
+    ->create();
