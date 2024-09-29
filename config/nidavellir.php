@@ -2,34 +2,97 @@
 
 return [
 
+    'system' => [
+
+        'job_poller' => [
+
+            'queue_name' => env('JOB_POLLER_QUEUE_NAME', gethostname()),
+
+            'max_parallel_jobs' => env('MAX_PARALLEL_JOBS', 1),
+
+        ],
+
+        'taapi' => [
+            /**
+             * The minimum percentage amplitude between each MA28 and MA56.
+             * The higher this number, the more the system will wait to
+             * confirm the price direction trend. You should keep it
+             * between 1 and 2.
+             */
+            'ma_min_amplitude_percentage' => 1.44,
+
+            /**
+             * Indicator candle size.
+             */
+            'interval' => '1h',
+        ],
+
+        'api' => [
+
+            'params' => [
+
+                'binance' => [
+                    // Max weight per minute.
+                    'weight_limit' => 2400,
+
+                    'http_errors_to_skip' => [
+                        // Skip token unnecessary margin updates.
+                        '400' => ['-4046'],
+                    ],
+                ],
+            ],
+
+            'credentials' => [
+                // CoinmarketCap
+                'coinmarketcap' => [
+                    'api_key' => env('COINMARKETCAP_API_KEY'),
+                ],
+
+                // Binance
+                'binance' => [
+                    'api_key' => env('BINANCE_API_KEY'),
+                    'secret_key' => env('BINANCE_SECRET_KEY'),
+                ],
+
+                'taapi' => [
+                    'api_key' => env('TAAPI_API_KEY'),
+                ],
+
+                // Coinbase (TODO)
+            ],
+        ],
+    ],
+
     'symbols' => [
 
         /**
-         * Symbols that will never be used for trading.
+         * These are the symbols that each day the jobs will run to
+         * update information for the next trades. These are the
+         * active symbols, the ones that will be used to
+         * compute trades.
          */
-        'excluded' => [
-
-            /**
-             * Token symbols excluded for any exchange, not
-             * to be used on any trading.
-             */
-            'tokens' => [
-                'USDT',
-                'USDC',
-                'BTC',
-                'FDUSD',
-            ],
-
-            /**
-             * The minimum token rank to be elligible for trading.
-             * All the ones after this rank number will be
-             * disabled.
-             */
-            'min_rank' => 20,
+        'included' => [
+            'ARK', // -- Revolutionary.
+            'BNX',
+            'BNB',
+            'TRX',
+            'ICP',
+            'ARB',
+            'LINK',
+            'BCH',
+            'NEAR',
+            'FET',
         ],
     ],
 
     'positions' => [
+
+        /**
+         * The absolutely minimum amount that the trader needs
+         * to have for a trade. If not, the position will not
+         * be opened.
+         */
+        'minimum_trade_amount' => 100,
 
         /**
          * The total amount traded on a position. This will be
@@ -39,92 +102,52 @@ return [
          * our maximum portfolio investement in the sum
          * of all the orders will be 450.
          */
-        'amount_percentage_per_trade' => 4.5,
+        'amount_percentage_per_trade' => 5,
 
         /**
-         * Nidavellir should open LONG or SHORT positions.
-         * At the moment, it's only made for LONG trades.
+         * The current orders ratio configuration.
+         * We can have several and later decide to
+         * change them to check if there is more
+         * profitable ratios or not. And also add
+         * more entries or decrease entries.
          */
-        'side' => 'buy',
+        'current_order_ratio_group' => 'configuration_1',
 
         /**
-         * The default leverage that we should apply. For
-         * now we don't check the leverage rachet, but
-         * later it's important to check before we
-         * compute the position orders to avoid orders
-         * being cancelled due to excessive leverage
-         * for the respective total trade amount.
+         * The default leverage that we should apply. In
+         * case this leverage cannot be applied, then
+         * the system will decrease the leverage to
+         * the possible total trade amount that
+         * can be used on the maximum possible
+         * leverage (leverage bracketing).
          */
-        'margin_ratio' => 25,
+        'planned_leverage' => 25,
     ],
 
     'orders' => [
 
-        /**
-         * The percentage that the next order will be from the
-         * market order mark price. As example, if you have a
-         * 7.31, then nidavellir will open a limit order 7.31%
-         * distanced from the market order mark price. Each
-         * entry will be a new order created. In bearish
-         * and in bullish trends.
-         */
-        'bearish' => [
+        'configuration_1' => [
             /**
-             * Total entry limit orders to open. 5 for instance
-             * is safer than 4.
+             * The ratio is composed by 2 values:
+             * The percentage ratio compared to the market
+             * mark price.
+             *
+             * The amount division, so we can place the orders
+             * in a laddered strategy, on this case with an
+             * amount scale of increasing exponential.
              */
-            'num_orders' => 5,
+            'ratios' => [
+                'MARKET' => [0, 32],
 
-            /**
-             * What's the percentage ratios. How much should
-             * the order decrease compared to the mark price.
-             * Each order will decrease to allow the laddered
-             * DCA to work.
-             */
-            'percentage_ratios' => [
-                0,
-                7.31,
-                14.83,
-                22.34,
-                29.86,
+                'LIMIT' => [
+                    [7.493, 16],
+                    [14.976,  8],
+                    [22.470,  4],
+                    [29.953,  2],
+                ],
+
+                'PROFIT' => [0.305, 1],
             ],
-
-            /**
-             * Amount scale is the amount "n-plication" for each new
-             * entry order. For instance, if we have amount scale=2
-             * and 3 orders, and the order size will be 180, then
-             * the first order will be 30,60,90.
-             */
-            'amount_scale' => 2,
-        ],
-
-        'bullish' => [
-            /**
-             * Total entry limit orders to open. 5 for instance
-             * is safer than 4.
-             */
-            'num_orders' => 5,
-
-            /**
-             * What's the percentage ratios. How much should
-             * the order decrease compared to the mark price.
-             * Each order will decrease to allow the laddered
-             * DCA to work.
-             */
-            'percentage_ratios' => [
-                0,
-                7.31,
-                14.83,
-                22.34,
-            ],
-
-            /**
-             * Amount scale is the amount "n-plication" for each new
-             * entry order. For instance, if we have amount scale=2
-             * and 3 orders, and the order size will be 180, then
-             * the first order will be 30,60,90.
-             */
-            'amount_scale' => 2,
         ],
     ],
 ];

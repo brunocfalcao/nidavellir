@@ -3,56 +3,84 @@
 namespace Nidavellir\Trading\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Bus;
-use Nidavellir\Trading\Exchanges\Binance\BinanceMapper;
-use Nidavellir\Trading\Jobs\Symbols\UpsertEligibleSymbolsJob;
-use Nidavellir\Trading\Jobs\Symbols\UpsertSymbolMetadata;
-use Nidavellir\Trading\Jobs\Symbols\UpsertSymbolRankings;
-use Nidavellir\Trading\Jobs\Symbols\UpsertSymbols;
-use Nidavellir\Trading\Jobs\System\UpsertExchangeAvailableTokens;
-use Nidavellir\Trading\Jobs\System\UpsertFearGreedIndexJob;
-use Nidavellir\Trading\Models\Exchange;
-use Nidavellir\Trading\Models\System;
+use Illuminate\Support\Facades\File;
+use Nidavellir\Trading\JobPollerManager;
+use Nidavellir\Trading\Jobs\ApiSystems\CoinmarketCap\UpsertSymbolMetadataJob;
+use Nidavellir\Trading\Jobs\ApiSystems\CoinmarketCap\UpsertSymbolsJob;
+use Nidavellir\Trading\Jobs\ApiSystems\Taapi\UpsertSymbolTradeDirectionJob;
+use Nidavellir\Trading\Models\ApiSystem;
 use Nidavellir\Trading\Models\Trader;
 
 class TradingGenesisSeeder extends Seeder
 {
     public function run(): void
     {
-        $exchange = new Exchange;
-        $exchange->name = 'Binance';
-        $exchange->canonical = 'binance';
-        $exchange->futures_url_prefix = 'https://fapi.binance.com';
-        $exchange->save();
+        File::put(storage_path('logs/laravel.log'), ' ');
 
-        // Admin/standard trader person.
-        $trader = new Trader;
-        $trader->name = env('TRADER_NAME');
-        $trader->email = env('TRADER_EMAIL');
-        $trader->password = bcrypt(env('TRADER_PASSWORD'));
-        $trader->binance_api_key = env('BINANCE_API_KEY');
-        $trader->binance_secret_key = env('BINANCE_SECRET_KEY');
-        $trader->exchange_id = $exchange->id;
-        $trader->save();
+        $this->createApiSystems();
+        $trader = $this->createTrader();
+        $this->queueJobs($trader);
+    }
 
-        System::create([
-            'fear_greed_index_threshold' => 85,
+    private function createApiSystems(): void
+    {
+        ApiSystem::create([
+            'name' => 'Binance',
+            'canonical' => 'binance',
+            'taapi_canonical' => 'binancefutures',
+            'is_exchange' => true,
+            'namespace_prefix_jobs' => "Nidavellir\Trading\Jobs\ApiSystems\Binance",
+            'namespace_class_rest' => "Nidavellir\Trading\ApiSystems\Binance\BinanceRESTMapper",
+            'namespace_class_websocket' => "Nidavellir\Trading\ApiSystems\Binance\BinanceWebsocketMapper",
+            'futures_url_rest_prefix' => 'https://fapi.binance.com',
+            'futures_url_websockets_prefix' => 'wss://fstream.binance.com',
         ]);
 
-        Bus::chain([
-            // System jobs.
-            new UpsertSymbols(200),
-            new UpsertSymbolMetadata,
-            new UpsertSymbolRankings,
+        ApiSystem::create([
+            'name' => 'CoinmarketCap',
+            'canonical' => 'coinmarketcap',
+            'namespace_class_rest' => "Nidavellir\Trading\ApiSystems\CoinmarketCap\CoinmarketCapRESTMapper",
+            'other_url_prefix' => 'https://pro-api.coinmarketcap.com/v1/cryptocurrency',
+        ]);
 
-            // Exchange-based jobs.
-            new UpsertExchangeAvailableTokens(new BinanceMapper($trader)),
+        ApiSystem::create([
+            'name' => 'Taapi',
+            'canonical' => 'taapi',
+            'namespace_class_rest' => "Nidavellir\Trading\ApiSystems\Taapi\TaapiRESTMapper",
+            'namespace_prefix_jobs' => "Nidavellir\Trading\Jobs\ApiSystems\Taapi",
+            'other_url_prefix' => 'https://api.taapi.io',
+        ]);
+    }
 
-            // Disable non-elligible & non-ranked symbols.
-            new UpsertEligibleSymbolsJob,
+    private function createTrader(): Trader
+    {
+        return Trader::create([
+            'name' => env('TRADER_NAME'),
+            'email' => env('TRADER_EMAIL'),
+            'password' => bcrypt(env('TRADER_PASSWORD')),
+            'binance_api_key' => env('BINANCE_API_KEY'),
+            'binance_secret_key' => env('BINANCE_SECRET_KEY'),
+            'api_system_id' => ApiSystem::where('canonical', 'binance')->value('id'),
+        ]);
+    }
 
-            // Update fear and greed index.
-            new UpsertFearGreedIndexJob,
-        ])->dispatch();
+    private function queueJobs(Trader $trader): void
+    {
+        $jobPoller = new JobPollerManager;
+        $jobPoller->newBlockUUID();
+
+        $jobPoller->addJob(UpsertSymbolsJob::class, 500)
+                  ->addJob(UpsertSymbolMetadataJob::class);
+
+        foreach (ApiSystem::where('is_exchange', true)->get() as $exchange) {
+            $nsPrefix = $exchange->namespace_prefix_jobs;
+
+            $jobPoller->addJob($nsPrefix . '\\UpsertExchangeAvailableSymbolsJob')
+                      ->addJob($nsPrefix . '\\UpsertNotionalAndLeverageJob');
+        }
+
+        $jobPoller->addJob(UpsertSymbolTradeDirectionJob::class);
+        $jobPoller->release();
+        $jobPoller->handle();
     }
 }
