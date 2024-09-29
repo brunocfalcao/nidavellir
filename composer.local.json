@@ -14,12 +14,27 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/nidavellir/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": "^8.2",
         "brunocfalcao/nidavellir-trading": "dev-master",
         "laravel/framework": "^11.9",
         "laravel/ui": "^4.5",
         "predis/predis": "^2.2"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "jubeki/laravel-code-style": "^2.13",
+        "larastan/larastan": "^2.0",
+        "nunomaduro/collision": "^8.0"
     },
     "autoload": {
         "psr-4": {

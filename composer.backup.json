@@ -14,16 +14,28 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/nidavellir/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": "^8.2",
-        "brunocfalcao/nidavellir-trading": "*",
+        "brunocfalcao/nidavellir-backend": "dev-master",
+        "brunocfalcao/nidavellir-trading": "dev-master",
+        "brunocfalcao/nidavellir-website": "*",
         "laravel/framework": "^11.9",
-        "nelexa/zip": "^4.0",
+        "laravel/ui": "^4.5",
         "predis/predis": "^2.2"
     },
     "require-dev": {
-        "jubeki/laravel-code-style": "^2.13",
         "fakerphp/faker": "^1.23",
+        "jubeki/laravel-code-style": "^2.13",
+        "larastan/larastan": "^2.0",
         "nunomaduro/collision": "^8.0"
     },
     "autoload": {
