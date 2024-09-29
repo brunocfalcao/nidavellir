@@ -22,3 +22,5 @@ public/*
 packages
 packages/*
 php-cs-*.*
+composer.local.json
+composer.ploi.json
