@@ -180,12 +180,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/brunocfalcao/nidavellir-trading.git",
-                "reference": "3e2499284bbac67ad950dc27083ea5b614e40289"
+                "reference": "f7fc662015f9798ff5c66648daf7e607de698f9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brunocfalcao/nidavellir-trading/zipball/3e2499284bbac67ad950dc27083ea5b614e40289",
-                "reference": "3e2499284bbac67ad950dc27083ea5b614e40289",
+                "url": "https://api.github.com/repos/brunocfalcao/nidavellir-trading/zipball/f7fc662015f9798ff5c66648daf7e607de698f9d",
+                "reference": "f7fc662015f9798ff5c66648daf7e607de698f9d",
                 "shasum": ""
             },
             "require": {
@@ -235,7 +235,7 @@
                 "issues": "https://github.com/brunocfalcao/nidavellir-trading/issues",
                 "source": "https://github.com/brunocfalcao/nidavellir-trading/tree/master"
             },
-            "time": "2024-09-30T19:04:22+00:00"
+            "time": "2024-09-30T19:14:54+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
