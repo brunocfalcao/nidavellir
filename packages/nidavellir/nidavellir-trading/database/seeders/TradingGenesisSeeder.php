@@ -4,7 +4,8 @@ namespace Nidavellir\Trading\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
-use Nidavellir\Trading\JobPollerManager;
+use Nidavellir\Trading\Jobs\ApiSystems\Binance\UpsertExchangeAvailableSymbolsJob;
+use Nidavellir\Trading\Jobs\ApiSystems\Binance\UpsertNotionalAndLeverageJob;
 use Nidavellir\Trading\Jobs\ApiSystems\CoinmarketCap\UpsertSymbolMetadataJob;
 use Nidavellir\Trading\Jobs\ApiSystems\CoinmarketCap\UpsertSymbolsJob;
 use Nidavellir\Trading\Jobs\ApiSystems\Taapi\UpsertSymbolTradeDirectionJob;
@@ -19,7 +20,7 @@ class TradingGenesisSeeder extends Seeder
 
         $this->createApiSystems();
         $trader = $this->createTrader();
-        $this->queueJobs($trader);
+        $this->queueJobs();
     }
 
     private function createApiSystems(): void
@@ -54,33 +55,24 @@ class TradingGenesisSeeder extends Seeder
 
     private function createTrader(): Trader
     {
+        $testData = config('test');
+
         return Trader::create([
-            'name' => env('TRADER_NAME'),
-            'email' => env('TRADER_EMAIL'),
-            'password' => bcrypt(env('TRADER_PASSWORD')),
-            'binance_api_key' => env('BINANCE_API_KEY'),
-            'binance_secret_key' => env('BINANCE_SECRET_KEY'),
+            'name' => $testData['trader_name'],
+            'email' => $testData['trader_email'],
+            'password' => bcrypt($testData['trader_password']),
+            'binance_api_key' => $testData['binance_api_key'],
+            'binance_secret_key' => $testData['binance_secret_key'],
             'api_system_id' => ApiSystem::where('canonical', 'binance')->value('id'),
         ]);
     }
 
-    private function queueJobs(Trader $trader): void
+    private function queueJobs()
     {
-        $jobPoller = new JobPollerManager;
-        $jobPoller->newBlockUUID();
-
-        $jobPoller->addJob(UpsertSymbolsJob::class, 500)
-            ->addJob(UpsertSymbolMetadataJob::class);
-
-        foreach (ApiSystem::where('is_exchange', true)->get() as $exchange) {
-            $nsPrefix = $exchange->namespace_prefix_jobs;
-
-            $jobPoller->addJob($nsPrefix.'\\UpsertExchangeAvailableSymbolsJob')
-                ->addJob($nsPrefix.'\\UpsertNotionalAndLeverageJob');
-        }
-
-        $jobPoller->addJob(UpsertSymbolTradeDirectionJob::class);
-        $jobPoller->release();
-        $jobPoller->handle();
+        UpsertSymbolsJob::dispatchSync(500);
+        UpsertSymbolMetadataJob::dispatchSync();
+        UpsertExchangeAvailableSymbolsJob::dispatchSync();
+        UpsertNotionalAndLeverageJob::dispatchSync();
+        UpsertSymbolTradeDirectionJob::dispatchSync();
     }
 }

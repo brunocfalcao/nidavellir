@@ -19,7 +19,7 @@ return [
              * confirm the price direction trend. You should keep it
              * between 1 and 2.
              */
-            'ma_min_amplitude_percentage' => 1.44,
+            'ma_min_amplitude_percentage' => 0.1,
 
             /**
              * Indicator candle size.
@@ -31,6 +31,10 @@ return [
 
             'params' => [
 
+                'kucoin' => [
+                    'plan' => 'VIP0',
+                ],
+
                 'binance' => [
                     // Max weight per minute.
                     'weight_limit' => 2400,
@@ -39,6 +43,14 @@ return [
                         // Skip token unnecessary margin updates.
                         '400' => ['-4046'],
                     ],
+                ],
+
+                'coinmarketcap' => [
+                    'plan' => 'free',
+                ],
+
+                'taapi' => [
+                    'plan' => 'pro',
                 ],
             ],
 
@@ -82,6 +94,7 @@ return [
             'BCH',
             'NEAR',
             'FET',
+            'ADA', // -- Just for testing (SHORT)
         ],
     ],
 
