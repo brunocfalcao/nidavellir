@@ -194,6 +194,7 @@ return new class extends Migration
             $table->decimal('filled_quantity', 20, 8)->nullable();
             $table->string('order_exchange_system_id')->nullable();
             $table->longText('api_result')->nullable();
+            $table->longText('error_message')->nullable();
             $table->timestamps();
 
             $table->index(['position_id', 'status']);

@@ -94,7 +94,7 @@ return [
             'BCH',
             'NEAR',
             'FET',
-            'ADA', // -- Just for testing (SHORT)
+            //'ADA', // -- Just for testing (SHORT)
         ],
     ],
 
