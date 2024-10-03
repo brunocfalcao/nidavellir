@@ -84,12 +84,12 @@ return [
          * compute trades.
          */
         'included' => [
-            'ARK', // -- Revolutionary.
+            //'ARK', // -- Revolutionary.
             'BNX',
             'BNB',
-            'TRX',
+            //'TRX',
             'ICP',
-            'ARB',
+            //'ARB',
             'LINK',
             'BCH',
             'NEAR',
@@ -105,7 +105,7 @@ return [
          * to have for a trade. If not, the position will not
          * be opened.
          */
-        'minimum_trade_amount' => 100,
+        'minimum_trade_amount' => 20,
 
         /**
          * The total amount traded on a position. This will be
@@ -115,7 +115,7 @@ return [
          * our maximum portfolio investement in the sum
          * of all the orders will be 450.
          */
-        'amount_percentage_per_trade' => 5,
+        'amount_percentage_per_trade' => 6.25,
 
         /**
          * The current orders ratio configuration.
@@ -134,7 +134,7 @@ return [
          * can be used on the maximum possible
          * leverage (leverage bracketing).
          */
-        'planned_leverage' => 25,
+        'planned_leverage' => 20,
     ],
 
     'orders' => [
@@ -153,13 +153,24 @@ return [
                 'MARKET' => [0, 32],
 
                 'LIMIT' => [
-                    [7.493, 16],
+                    [7.493,  16],
                     [14.976,  8],
                     [22.470,  4],
                     [29.953,  2],
                 ],
 
                 'PROFIT' => [0.305, 1],
+
+                /*
+                'LIMIT' => [
+                    [0.03,  16],
+                    [0.05,  8],
+                    [0.07,  4],
+                    [0.09,  2],
+                ],
+                */
+
+                //'PROFIT' => [0.100, 1],
             ],
         ],
     ],

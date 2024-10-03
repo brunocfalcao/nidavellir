@@ -55,7 +55,7 @@ if errorlevel 1 goto :error
 
 :: Step 8
 echo "Step 8: Retrieving the latest GitHub commit hash"
-for /f "tokens=1" %%i in ('git log -n 1 --format=%%H') do set commitHash=%%i
+for /f "tokens=1" %%i in ('git log -n 1 --pretty=format:"%%H"') do set commitHash=%%i
 echo "Latest commit hash: %commitHash%"
 
 :: Done
