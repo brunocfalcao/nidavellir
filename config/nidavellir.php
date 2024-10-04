@@ -4,14 +4,6 @@ return [
 
     'system' => [
 
-        'job_poller' => [
-
-            'queue_name' => env('JOB_POLLER_QUEUE_NAME', gethostname()),
-
-            'max_parallel_jobs' => env('MAX_PARALLEL_JOBS', 1),
-
-        ],
-
         'taapi' => [
             /**
              * The minimum percentage amplitude between each MA28 and MA56.
