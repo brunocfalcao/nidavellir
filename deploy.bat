@@ -55,9 +55,23 @@ call composer update
 if errorlevel 1 goto :error
 
 :: Step 8
-echo "Step 8: Retrieving the latest GitHub commit hash"
-for /f "delims=" %%i in ('git log -n 1 --pretty=format:"%%h"') do set commitHash=%%i
-echo "Latest commit hash: %commitHash%"
+echo "Step 8: Retrieving the latest GitHub commit hash using API"
+
+:: Replace the following with your actual GitHub repository details
+set repoOwner=brunocfalcao
+set repoName=nidavellir-trading
+
+:: Making the API call to fetch the latest commit
+curl -s https://api.github.com/repos/%repoOwner%/%repoName%/commits | findstr /r /c:"\"sha\"" > temp.txt
+
+:: Extracting the short commit hash (first 7 characters)
+set /p commitHash=<temp.txt
+set shortCommitHash=%commitHash:~8,7%
+
+echo "Latest commit hash: %shortCommitHash%"
+
+:: Cleanup
+del temp.txt
 
 :: Done
 echo "All steps completed successfully."
