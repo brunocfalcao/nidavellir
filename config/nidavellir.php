@@ -6,7 +6,7 @@ return [
 
         'force_min_notional' => true,
 
-        'force_min_trade_amount' => 50
+        'force_min_trade_amount' => 50,
 
     ],
 
