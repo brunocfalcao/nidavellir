@@ -61,12 +61,15 @@ echo "Step 8: Retrieving the latest GitHub commit hash using API"
 set repoOwner=brunocfalcao
 set repoName=nidavellir-trading
 
-:: Making the API call to fetch the latest commit
+:: Making the API call to fetch the latest commit hash (first commit in the response)
 curl -s https://api.github.com/repos/%repoOwner%/%repoName%/commits | findstr /r /c:"\"sha\"" > temp.txt
 
-:: Extracting the short commit hash (first 7 characters)
-set /p commitHash=<temp.txt
-set shortCommitHash=%commitHash:~8,7%
+:: Extract the full commit hash from the temp.txt file (removing extra characters)
+for /f "tokens=2 delims=:" %%i in (temp.txt) do set fullCommitHash=%%i
+set fullCommitHash=%fullCommitHash:~2,40%
+
+:: Now, get the short version (first 7 characters of the commit hash)
+set shortCommitHash=%fullCommitHash:~0,7%
 
 echo "Latest commit hash: %shortCommitHash%"
 
