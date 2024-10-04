@@ -4,7 +4,9 @@ return [
 
     'debug' => [
 
-        'force_min_notional' => true
+        'force_min_notional' => true,
+
+        'force_min_trade_amount' => 50
 
     ],
 
