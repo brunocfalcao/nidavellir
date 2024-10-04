@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 
 :: Step 1
 echo "Step 1: Renaming composer.json to composer.local.json"
@@ -56,7 +57,7 @@ if errorlevel 1 goto :error
 :: Step 8
 echo "Step 8: Retrieving the latest GitHub commit hash"
 for /f "tokens=1" %%i in ('git log -n 1 --pretty=format:"%%H"') do set commitHash=%%i
-echo "Latest commit hash: %commitHash%"
+echo "Latest commit hash: !commitHash!"
 
 :: Done
 echo "All steps completed successfully."
