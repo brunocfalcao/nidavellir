@@ -1,26 +1,49 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+# Ignore environment files
 .env
 .env.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
+
+# Ignore composer files
+composer.local.json
+composer.ploi.json
+/vendor
+
+# Ignore npm and yarn logs
+npm-debug.log
+yarn-error.log
+
+# Ignore PHPUnit and phpactor cache and results
+/.phpunit.cache
+/.phpunit.result.cache
+/.phpactor.json
+
+# Ignore Homestead and authentication files
 Homestead.json
 Homestead.yaml
 auth.json
-npm-debug.log
-yarn-error.log
-/.fleet
+
+# Ignore IDE/editor specific directories and files
 /.idea
 /.vscode
-public/*
-/packages
-/packages/*
+/.fleet
+
+# Ignore build and hot reload assets from public
+/public/build
+/public/hot
+
+# Ignore node_modules
+/node_modules
+
+# Ignore public storage and other generated files
+/public/storage
+/public/*
+
+# Ignore storage keys and files
+/storage/*.key
+
+# Ignore test coverage, temporary files, and cache
 php-cs-*.*
-composer.local.json
-composer.ploi.json
+/packages
+
+# Ignore fleet-related files
+/.fleet
