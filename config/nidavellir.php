@@ -2,6 +2,12 @@
 
 return [
 
+    'debug' => [
+
+        'force_min_notional' => true
+
+    ],
+
     'system' => [
 
         'taapi' => [
