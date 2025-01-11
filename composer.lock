@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f67c62d46eccf68d17e695f513dc5fc2",
+    "content-hash": "357098f375c4af3033834343ad937295",
     "packages": [
         {
             "name": "angle/chrono",
@@ -161,54 +161,6 @@
             "time": "2023-11-29T23:19:16+00:00"
         },
         {
-            "name": "brunocfalcao/grok",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "packages/nidavellir/grok",
-                "reference": "98b024993853f32815d29ef4c72ed7e6e4c5d10b"
-            },
-            "require": {
-                "illuminate/contracts": "^11.0",
-                "php": "^8.2"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Nidavellir\\Grok\\GrokServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Nidavellir\\Grok\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bruno Falcão",
-                    "email": "bruno.c.falcao@brunofalcao.me",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Nidavellir Grok",
-            "homepage": "https://github.com/brunocfalcao/grok",
-            "keywords": [
-                "php"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
             "name": "brunocfalcao/laravel-helpers",
             "version": "dev-master",
             "source": {
@@ -272,7 +224,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/nidavellir/mjolnir",
-                "reference": "dbe37dbb499a6711305326b0c268538c1dde923a"
+                "reference": "c923fc4af2ea016f87efe9e8ab42614831b9a036"
             },
             "require": {
                 "angle/chrono": "^1.0",
@@ -328,7 +280,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/nidavellir/thor",
-                "reference": "ffcba25598d75bf81cab9ff623c5e07d6a9c667a"
+                "reference": "838535eb493e6d7a2594386d087ec96274fb50eb"
             },
             "require": {
                 "illuminate/contracts": "^11.0",
@@ -8269,7 +8221,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "brunocfalcao/grok": 20,
         "brunocfalcao/mjolnir": 20
     },
     "prefer-stable": true,

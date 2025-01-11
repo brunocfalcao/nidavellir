@@ -15,7 +15,6 @@
     ],
     "require": {
         "php": "^8.2",
-        "brunocfalcao/grok": "dev-master",
         "brunocfalcao/mjolnir": "dev-master",
         "laravel/framework": "^11.0"
     },
