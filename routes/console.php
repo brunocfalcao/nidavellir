@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Schedule;
 
-Schedule::command('mjolnir:sync-positions')
+Schedule::command('mjolnir:sync-orders')
     ->everyMinute();
 
 /*
