@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Schedule;
 
-Schedule::command('mjonir:sync-positions')
+Schedule::command('mjolnir:sync-positions')
     ->everyMinute();
 
 /*
@@ -10,7 +10,7 @@ Schedule::command('mjonir:dispatch-positions')
     ->everyMinute();
 */
 
-Schedule::command('mjonir:refresh-data')
+Schedule::command('mjolnir:refresh-data')
     ->everyFifteenMinutes();
 
 Schedule::command('mjonir:dispatch-core-job-queue')
