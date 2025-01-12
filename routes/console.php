@@ -13,5 +13,5 @@ Schedule::command('mjonir:dispatch-positions')
 Schedule::command('mjolnir:refresh-data')
     ->everyFifteenMinutes();
 
-Schedule::command('mjonir:dispatch-core-job-queue')
+Schedule::command('mjolnir:dispatch-core-job-queue')
     ->everySecond();
