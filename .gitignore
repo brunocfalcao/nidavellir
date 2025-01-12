@@ -24,3 +24,4 @@ Homestead.json
 packages
 Queries.sql
 deploy.bat
+core-job-queue-dispatch.ps1
