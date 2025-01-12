@@ -224,12 +224,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/brunocfalcao/mjolnir.git",
-                "reference": "c923fc4af2ea016f87efe9e8ab42614831b9a036"
+                "reference": "6dcc73334a9045cd6703e2fa4b8a772ebe08bcfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brunocfalcao/mjolnir/zipball/c923fc4af2ea016f87efe9e8ab42614831b9a036",
-                "reference": "c923fc4af2ea016f87efe9e8ab42614831b9a036",
+                "url": "https://api.github.com/repos/brunocfalcao/mjolnir/zipball/6dcc73334a9045cd6703e2fa4b8a772ebe08bcfa",
+                "reference": "6dcc73334a9045cd6703e2fa4b8a772ebe08bcfa",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 "issues": "https://github.com/brunocfalcao/mjolnir/issues",
                 "source": "https://github.com/brunocfalcao/mjolnir/tree/master"
             },
-            "time": "2025-01-11T22:42:35+00:00"
+            "time": "2025-01-12T12:32:28+00:00"
         },
         {
             "name": "brunocfalcao/thor",
