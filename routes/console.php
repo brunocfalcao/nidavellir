@@ -18,3 +18,6 @@ Schedule::command('mjolnir:refresh-data')
 
 Schedule::command('mjolnir:dispatch-core-job-queue')
     ->everySecond();
+
+Schedule::command('mjolnir:optimize')
+    ->weekly();
