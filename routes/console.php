@@ -10,6 +10,9 @@ Schedule::command('mjonir:dispatch-positions')
     ->everyMinute();
 */
 
+Schedule::command('mjolnir:update-accounts-balances')
+    ->everyFifteenMinutes();
+
 Schedule::command('mjolnir:refresh-data')
     ->everyFifteenMinutes();
 
