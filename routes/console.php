@@ -11,7 +11,7 @@ Schedule::command('mjonir:dispatch-positions')
 */
 
 Schedule::command('mjolnir:update-recvwindow-safety-duration')
-    ->everyMinute();
+    ->everyFifteenMinutes();
 
 Schedule::command('mjolnir:update-accounts-balances')
     ->everyFifteenMinutes();
