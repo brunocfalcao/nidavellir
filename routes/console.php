@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schedule;
 Schedule::command('mjolnir:sync-orders')
     ->everyMinute();
 
-Schedule::command('mjonir:dispatch-positions')
+Schedule::command('mjolnir:dispatch-positions')
     ->everyMinute();
 
 Schedule::command('mjolnir:update-recvwindow-safety-duration')
