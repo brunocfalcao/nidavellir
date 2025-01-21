@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Schedule;
 
+/*
 Schedule::command('mjolnir:sync-orders')
     ->everyMinute();
 
@@ -22,3 +23,4 @@ Schedule::command('mjolnir:dispatch-core-job-queue')
 
 Schedule::command('mjolnir:optimize')
     ->weekly();
+*/
