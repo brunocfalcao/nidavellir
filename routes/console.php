@@ -1,26 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Schedule;
+use Nidavellir\Thor\Models\System;
 
-/*
-Schedule::command('mjolnir:sync-orders')
-    ->everyMinute();
+return;
 
-Schedule::command('mjolnir:dispatch-positions')
-    ->everyMinute();
+if (System::first()->can_process_scheduled_tasks) {
+    Schedule::command('mjolnir:sync-orders')
+        ->everyMinute();
 
-Schedule::command('mjolnir:update-recvwindow-safety-duration')
-    ->everyThreeMinutes();
+    Schedule::command('mjolnir:dispatch-positions')
+        ->everyMinute();
 
-Schedule::command('mjolnir:update-accounts-balances')
-    ->everyFifteenMinutes();
+    Schedule::command('mjolnir:update-recvwindow-safety-duration')
+        ->everyThreeMinutes();
 
-Schedule::command('mjolnir:refresh-data')
-    ->hourly();
+    Schedule::command('mjolnir:update-accounts-balances')
+        ->everyFifteenMinutes();
 
-Schedule::command('mjolnir:dispatch-core-job-queue')
-    ->everySecond();
+    Schedule::command('mjolnir:refresh-data')
+        ->hourly();
 
-Schedule::command('mjolnir:optimize')
-    ->weekly();
-*/
+    Schedule::command('mjolnir:dispatch-core-job-queue')
+        ->everySecond();
+
+    Schedule::command('mjolnir:optimize')
+        ->weekly();
+}
