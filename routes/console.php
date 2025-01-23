@@ -1,7 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Schedule;
 use Nidavellir\Thor\Models\System;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Schedule;
+
+if (!Schema::hasTable('system')) {
+    return;
+}
 
 if (System::first()->can_process_scheduled_tasks) {
     Schedule::command('mjolnir:sync-orders')
