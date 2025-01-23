@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Schedule;
 use Nidavellir\Thor\Models\System;
 
-return;
-
 if (System::first()->can_process_scheduled_tasks) {
     Schedule::command('mjolnir:sync-orders')
         ->everyMinute();
