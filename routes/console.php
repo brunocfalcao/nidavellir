@@ -12,8 +12,8 @@ if (System::first()->can_process_scheduled_tasks) {
     Schedule::command('mjolnir:sync-orders')
         ->everyMinute();
 
-    Schedule::command('mjolnir:dispatch-positions')
-        ->everyMinute();
+    //Schedule::command('mjolnir:dispatch-positions')
+    //    ->everyMinute();
 
     Schedule::command('mjolnir:update-recvwindow-safety-duration')
         ->everyThreeMinutes();
