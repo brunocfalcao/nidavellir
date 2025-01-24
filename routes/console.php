@@ -1,10 +1,10 @@
 <?php
 
-use Nidavellir\Thor\Models\System;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Schedule;
+use Illuminate\Support\Facades\Schema;
+use Nidavellir\Thor\Models\System;
 
-if (!Schema::hasTable('system')) {
+if (! Schema::hasTable('system')) {
     return;
 }
 
@@ -12,7 +12,7 @@ if (System::first()->can_process_scheduled_tasks) {
     Schedule::command('mjolnir:sync-orders')
         ->everyMinute();
 
-    //Schedule::command('mjolnir:dispatch-positions')
+    // Schedule::command('mjolnir:dispatch-positions')
     //    ->everyMinute();
 
     Schedule::command('mjolnir:update-recvwindow-safety-duration')
