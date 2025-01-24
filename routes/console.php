@@ -9,7 +9,7 @@ if (! Schema::hasTable('system')) {
 }
 
 if (System::first()->can_process_scheduled_tasks) {
-    Schedule::command('mjolnir:report-wallet-balance')
+    Schedule::command('mjolnir:daily-report')
         ->dailyAt('00:00');
 
     Schedule::command('mjolnir:sync-orders')
