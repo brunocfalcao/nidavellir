@@ -26,8 +26,8 @@
         "php": "^8.2",
         "brunocfalcao/grok": "dev-master",
         "brunocfalcao/mjolnir": "dev-master",
-        "laravel/framework": "^11.0",
-        "rollbar/rollbar-laravel": "^8.0"
+        "honeybadger-io/honeybadger-laravel": "^4.4",
+        "laravel/framework": "^11.0"
     },
     "require-dev": {
         "jubeki/laravel-code-style": "^2.13",

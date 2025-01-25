@@ -16,6 +16,14 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
+
+        $exceptions->reportable(static function (Throwable $e) {
+            if (app()->bound('honeybadger')) {
+                app('honeybadger')->notify($e, app('request'));
+            }
+        });
+
+        /*
         $exceptions->report(function (Throwable $e) {
             // Notify admin users about unhandled exceptions
             User::admin()->get()->each(function ($user) use ($e) {
@@ -26,5 +34,6 @@ return Application::configure(basePath: dirname(__DIR__))
                 );
             });
         });
+        */
     })
     ->create();
