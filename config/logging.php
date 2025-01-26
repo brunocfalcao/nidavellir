@@ -56,7 +56,7 @@ return [
             'driver' => 'custom',
             'via' => Honeybadger\HoneybadgerLaravel\HoneybadgerLogDriver::class,
             'name' => 'honeybadger',
-            'level' => 'error',
+            'level' => 'info',
         ],
 
         'stack' => [
