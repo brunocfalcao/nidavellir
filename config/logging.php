@@ -52,11 +52,11 @@ return [
 
     'channels' => [
 
-        'rollbar' => [
-            'driver' => 'monolog',
-            'handler' => \Rollbar\Laravel\MonologHandler::class,
-            'access_token' => env('ROLLBAR_TOKEN'),
-            'level' => 'debug',
+        'honeybadger' => [
+            'driver' => 'custom',
+            'via' => Honeybadger\HoneybadgerLaravel\HoneybadgerLogDriver::class,
+            'name' => 'honeybadger',
+            'level' => 'error',
         ],
 
         'stack' => [
