@@ -13,12 +13,25 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/nidavellir/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": "^8.2",
-        "brunocfalcao/mjolnir": "dev-master",
         "brunocfalcao/grok": "dev-master",
-        "laravel/framework": "^11.0",
-        "honeybadger-io/honeybadger-laravel": "^4.4"
+        "brunocfalcao/mjolnir": "dev-master",
+        "honeybadger-io/honeybadger-laravel": "^4.4",
+        "laravel/framework": "^11.0"
+    },
+    "require-dev": {
+        "jubeki/laravel-code-style": "^2.13",
+        "nunomaduro/collision": "^8.1"
     },
     "autoload": {
         "psr-4": {
