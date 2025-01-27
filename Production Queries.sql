@@ -1,0 +1,29 @@
+# --- Total active position orders with status XXX 
+select positions.id, symbols.token, orders.status, count(1) 
+from orders, exchange_symbols, symbols, positions 
+where exchange_symbols.id = positions.exchange_symbol_id and 
+exchange_symbols.symbol_id = symbols.id and 
+positions.status = 'active' and 
+orders.position_id = positions.id and
+# ---
+orders.status in ('FILLED') 
+# ---
+group by positions.id order by symbols.token;
+
+# --- Get all orders from each respective position for specific conditions.
+select positions.id 'position_id', orders.* from
+	positions, orders, exchange_symbols, symbols
+    where
+    positions.id = orders.position_id
+    and positions.exchange_symbol_id = exchange_symbols.id
+    and positions.account_id = 1
+    and orders.position_id = positions.id
+    and exchange_symbols.symbol_id = symbols.id
+    # ----
+    and symbols.token = 'TAO'
+    # ----
+    order by positions.created_at desc;
+    
+# --- The total active orders (should match the same number in the exchange).
+select count(1) from orders, positions where orders.position_id = positions.id and orders.status in('NEW') and positions.status in ('new', 'active');
+
