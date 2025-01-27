@@ -12,6 +12,9 @@ if (System::first()->can_process_scheduled_tasks) {
     Schedule::command('mjolnir:daily-report')
         ->dailyAt('00:00');
 
+    Schedule::command('mjolnir:run-integrity-checks')
+        ->everyFourMinutes();
+
     Schedule::command('mjolnir:sync-orders')
         ->everyMinute();
 
