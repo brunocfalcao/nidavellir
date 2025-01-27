@@ -1,3 +1,20 @@
+# --- Exchange Symbols available
+select 
+	exchange_symbols.id, 
+	symbols.token,
+  symbols.category_canonical,
+  exchange_symbols.direction,
+  exchange_symbols.indicator_timeframe
+from
+	exchange_symbols, symbols, quotes
+where
+  quotes.id = exchange_symbols.quote_id and
+	exchange_symbols.symbol_id = symbols.id and
+  quotes.canonical = 'USDT' and 
+  is_tradeable = 1 and
+  direction is not null
+order by exchange_symbols.direction;
+
 # --- Total active position orders with status XXX 
 select positions.id, symbols.token, orders.status, count(1) 
 from orders, exchange_symbols, symbols, positions 
