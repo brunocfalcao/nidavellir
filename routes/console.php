@@ -9,14 +9,22 @@ if (! Schema::hasTable('system')) {
 }
 
 if (System::first()->can_process_scheduled_tasks) {
+    /*
+    If the current system time is between 01:00 AM and 07:00 AM, we don't trigger
+    */
+    if (! now()->isBetween(now()->startOfDay()->addHours(1), now()->startOfDay()->addHours(7))) {
+        Schedule::command('mjolnir:daily-report')
+            ->hourly();
+    }
+
+    Schedule::command('mjolnir:notify-high-margin-ratio')
+        ->everyFifteenMinutes();
+
     Schedule::command('mjolnir:purge-data')
         ->dailyAt('22:00');
 
     Schedule::command('mjolnir:identify-orphan-orders')
         ->everyFifteenMinutes();
-
-    Schedule::command('mjolnir:daily-report')
-        ->dailyAt('00:00');
 
     Schedule::command('mjolnir:run-integrity-checks')
         ->everyFourMinutes();
@@ -28,17 +36,17 @@ if (System::first()->can_process_scheduled_tasks) {
         ->everyMinute();
 
     Schedule::command('mjolnir:update-recvwindow-safety-duration')
-        ->everyThreeMinutes();
-
-    Schedule::command('mjolnir:update-accounts-balances')
         ->everyFifteenMinutes();
 
+    Schedule::command('mjolnir:update-accounts-balances')
+        ->everyFiveMinutes();
+
     Schedule::command('mjolnir:refresh-data')
-        ->hourly();
+        ->everyThirtyMinutes();
 
     Schedule::command('mjolnir:dispatch-core-job-queue')
         ->everySecond();
 
     Schedule::command('mjolnir:optimize')
-        ->weekly();
+        ->dailyAt("23:00");
 }
