@@ -48,5 +48,5 @@ if (System::first()->can_process_scheduled_tasks) {
         ->everySecond();
 
     Schedule::command('mjolnir:optimize')
-        ->dailyAt("23:00");
+        ->dailyAt('23:00');
 }
