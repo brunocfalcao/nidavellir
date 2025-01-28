@@ -9,6 +9,9 @@ if (! Schema::hasTable('system')) {
 }
 
 if (System::first()->can_process_scheduled_tasks) {
+    Schedule::command('mjolnir:identify-orphan-orders')
+        ->everyFifteenMinutes();
+
     Schedule::command('mjolnir:daily-report')
         ->dailyAt('00:00');
 
