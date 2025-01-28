@@ -9,6 +9,9 @@ if (! Schema::hasTable('system')) {
 }
 
 if (System::first()->can_process_scheduled_tasks) {
+    Schedule::command('mjolnir:purge-data')
+        ->dailyAt('22:00');
+
     Schedule::command('mjolnir:identify-orphan-orders')
         ->everyFifteenMinutes();
 
