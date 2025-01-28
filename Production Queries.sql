@@ -43,4 +43,3 @@ select positions.id 'position_id', orders.* from
     
 # --- The total active orders (should match the same number in the exchange).
 select count(1) from orders, positions where orders.position_id = positions.id and orders.status in('NEW') and positions.status in ('new', 'active');
-
