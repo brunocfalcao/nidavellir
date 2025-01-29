@@ -1,4 +1,4 @@
-# --- Exchange Symbols available
+# --- Exchange Symbols available at the moment
 select 
 	exchange_symbols.id, 
 	symbols.token,
@@ -16,16 +16,16 @@ where
 order by exchange_symbols.direction;
 
 # --- Total active position orders with status XXX 
-select positions.id, symbols.token, orders.status, count(1) 
+select positions.id, symbols.token, positions.status, positions.direction, orders.status, count(1) as 'filled_orders'
 from orders, exchange_symbols, symbols, positions 
-where exchange_symbols.id = positions.exchange_symbol_id and 
-exchange_symbols.symbol_id = symbols.id and 
-positions.status = 'active' and 
-orders.position_id = positions.id and
+where exchange_symbols.id = positions.exchange_symbol_id
+and exchange_symbols.symbol_id = symbols.id
+and positions.status = 'active'
+and orders.position_id = positions.id
 # ---
-orders.status in ('FILLED') 
+and orders.status in ('FILLED') 
 # ---
-group by positions.id order by symbols.token;
+group by positions.id order by positions.direction;
 
 # --- Get all orders from each respective position for specific conditions.
 select positions.id 'position_id', orders.* from
@@ -43,3 +43,5 @@ select positions.id 'position_id', orders.* from
     
 # --- The total active orders (should match the same number in the exchange).
 select count(1) from orders, positions where orders.position_id = positions.id and orders.status in('NEW') and positions.status in ('new', 'active');
+
+select * from core_job_queue where status = 'failed' order by id desc;
