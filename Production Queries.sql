@@ -45,3 +45,5 @@ select positions.id 'position_id', orders.* from
 select count(1) from orders, positions where orders.position_id = positions.id and orders.status in('NEW') and positions.status in ('new', 'active');
 
 select * from core_job_queue where status = 'failed' order by id desc;
+
+select * from orders where position_id = 2923;
