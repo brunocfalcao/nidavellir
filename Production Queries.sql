@@ -1,3 +1,7 @@
+select * from positions where status in ('closing', 'rollbacking') order by id desc;
+
+update positions set status = 'closed' where id = 2941; # It was closing.
+
 # --- Exchange Symbols available at the moment
 select 
 	exchange_symbols.id, 
@@ -16,7 +20,7 @@ where
 order by exchange_symbols.direction;
 
 # --- Total active position orders with status XXX 
-select positions.id, symbols.token, positions.status, positions.direction, orders.status, count(1) as 'filled_orders'
+select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction, orders.status, count(1) as 'filled_orders'
 from orders, exchange_symbols, symbols, positions 
 where exchange_symbols.id = positions.exchange_symbol_id
 and exchange_symbols.symbol_id = symbols.id
@@ -37,13 +41,19 @@ select positions.id 'position_id', orders.* from
     and orders.position_id = positions.id
     and exchange_symbols.symbol_id = symbols.id
     # ----
-    and symbols.token = 'TAO'
+    # and symbols.token = 'TAO'
     # ----
     order by positions.created_at desc;
     
 # --- The total active orders (should match the same number in the exchange).
 select count(1) from orders, positions where orders.position_id = positions.id and orders.status in('NEW') and positions.status in ('new', 'active');
 
-select * from core_job_queue where status = 'failed' order by id desc;
-
-select * from orders where position_id = 2923;
+select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction
+from exchange_symbols, symbols, positions 
+where exchange_symbols.id = positions.exchange_symbol_id
+and exchange_symbols.symbol_id = symbols.id
+and positions.status = 'active'
+# ---
+and orders.status in ('FILLED') 
+# ---
+group by positions.id order by positions.direction;
