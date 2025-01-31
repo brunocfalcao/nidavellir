@@ -1,7 +1,3 @@
-select * from positions where status in ('closing', 'rollbacking') order by id desc;
-
-update positions set status = 'closed' where id = 2941; # It was closing.
-
 # --- Exchange Symbols available at the moment
 select 
 	exchange_symbols.id, 
@@ -57,3 +53,10 @@ and positions.status = 'active'
 and orders.status in ('FILLED') 
 # ---
 group by positions.id order by positions.direction;
+
+
+# --- Positions query with any context you want.
+select positions.* from positions, exchange_symbols, symbols, quotes where
+	positions.exchange_symbol_id = exchange_symbols.id
+    and positions.quote_id = quotes.id
+    and 
