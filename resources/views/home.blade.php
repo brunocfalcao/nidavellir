@@ -77,7 +77,7 @@
         </nav>
 
         <div class="relative overflow-hidden">
-            <video class="absolute left-0 right-0 2xl:w-full top-32 min-[2200px]:top-0 min-[2800px]:-top-32 opacity-50 max-w-[none]" autoplay muted loop
+            <video class="absolute left-0 right-0 2xl:w-full top-32 min-[2200px]:top-0 min-[2800px]:-top-32 opacity-50 max-w-[none]" playsinline autoplay muted loop
                 src="{{ Vite::asset('resources/videos/background.mp4') }}"></video>
             <div class="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-transparent to-black"></div>
             <div class="relative w-full mx-auto max-w-7xl px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 py-16 lg:pt-24 lg:pb-64">
