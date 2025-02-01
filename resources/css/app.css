@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+.fancy-box {
+    background: rgb(29, 90, 227);
+    background: radial-gradient(
+            circle,
+            rgba(29, 90, 227, 0.2) 0%,
+            rgba(9, 35, 92, 0.2) 50%,
+            rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(16, 17, 20, 0.16) 0%,
+            rgba(98, 103, 122, 0.16) 100%
+        );
+    @apply border border-[rgba(255,255,255,0.2)] rounded-2xl;
+}
+
+.collapsible {
+    @apply relative py-6 pl-6 pr-16 border border-[#2A2B2B] rounded-xl;
+}
+
+.collapsible h3 {
+    @apply text-white font-medium text-lg;
+}
+
+.collapsible p {
+    @apply text-[#9FA3AC] font-medium text-lg mt-6;
+}
+
+.collapsible .open-close-icon svg {
+    @apply text-white size-4 transition-transform duration-500;
+}
+
+.collapsible.collapsed svg {
+    @apply -rotate-45;
+}
+
+.collapsible .open-close-icon {
+    @apply absolute right-6 top-6 p-1 rounded-full border border-[#9FA3AC] inline-block;
+}
