@@ -4,10 +4,182 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/images/__section-3-background-top.png": {
+    "file": "assets/__section-3-background-top-D24YlTRJ.png",
+    "src": "resources/images/__section-3-background-top.png"
+  },
+  "resources/images/api-key-icon.svg": {
+    "file": "assets/api-key-icon-LMlQP2kr.svg",
+    "src": "resources/images/api-key-icon.svg"
+  },
+  "resources/images/background-blue-4.svg": {
+    "file": "assets/background-blue-4-UcSjsBk8.svg",
+    "src": "resources/images/background-blue-4.svg"
+  },
+  "resources/images/chart-1.png": {
+    "file": "assets/chart-1-Cinz_iRH.png",
+    "src": "resources/images/chart-1.png"
+  },
+  "resources/images/chart-2.png": {
+    "file": "assets/chart-2-DfFpfmJ6.png",
+    "src": "resources/images/chart-2.png"
+  },
+  "resources/images/cube-01.svg": {
+    "file": "assets/cube-01-W2mlNAlQ.svg",
+    "src": "resources/images/cube-01.svg"
+  },
+  "resources/images/diamond.svg": {
+    "file": "assets/diamond-CnxI5hSL.svg",
+    "src": "resources/images/diamond.svg"
+  },
+  "resources/images/footer-background-mobile.svg": {
+    "file": "assets/footer-background-mobile-Dxqj9SPI.svg",
+    "src": "resources/images/footer-background-mobile.svg"
+  },
+  "resources/images/footer-background.jpg": {
+    "file": "assets/footer-background-D4yU6bOP.jpg",
+    "src": "resources/images/footer-background.jpg"
+  },
+  "resources/images/footer-background.svg": {
+    "file": "assets/footer-background-DZPsKaHW.svg",
+    "src": "resources/images/footer-background.svg"
+  },
+  "resources/images/full-auto-trading-icon.svg": {
+    "file": "assets/full-auto-trading-icon-YXRErAbd.svg",
+    "src": "resources/images/full-auto-trading-icon.svg"
+  },
+  "resources/images/grid-dots-outer.svg": {
+    "file": "assets/grid-dots-outer-LP18C4eB.svg",
+    "src": "resources/images/grid-dots-outer.svg"
+  },
+  "resources/images/icon-5.svg": {
+    "file": "assets/icon-5-BmuS7_uy.svg",
+    "src": "resources/images/icon-5.svg"
+  },
+  "resources/images/icon-6.svg": {
+    "file": "assets/icon-6-ETllwRpg.svg",
+    "src": "resources/images/icon-6.svg"
+  },
+  "resources/images/illustration-1.svg": {
+    "file": "assets/illustration-1-Eqifu_kr.svg",
+    "src": "resources/images/illustration-1.svg"
+  },
+  "resources/images/illustration-2.svg": {
+    "file": "assets/illustration-2-yVScF6TI.svg",
+    "src": "resources/images/illustration-2.svg"
+  },
+  "resources/images/illustration-3.svg": {
+    "file": "assets/illustration-3-BikMbzFv.svg",
+    "src": "resources/images/illustration-3.svg"
+  },
+  "resources/images/key-features-1.png": {
+    "file": "assets/key-features-1-DJLt1t8A.png",
+    "src": "resources/images/key-features-1.png"
+  },
+  "resources/images/key-features-2.png": {
+    "file": "assets/key-features-2-CjfmgSjC.png",
+    "src": "resources/images/key-features-2.png"
+  },
+  "resources/images/key-features-3.png": {
+    "file": "assets/key-features-3-CIrhdH9i.png",
+    "src": "resources/images/key-features-3.png"
+  },
+  "resources/images/key-features-4.png": {
+    "file": "assets/key-features-4-Cb5JGJyU.png",
+    "src": "resources/images/key-features-4.png"
+  },
+  "resources/images/key-features-5.png": {
+    "file": "assets/key-features-5-C16iP10S.png",
+    "src": "resources/images/key-features-5.png"
+  },
+  "resources/images/key-features-6.png": {
+    "file": "assets/key-features-6-CKku9DS7.png",
+    "src": "resources/images/key-features-6.png"
+  },
+  "resources/images/key-features-icon-1.svg": {
+    "file": "assets/key-features-icon-1-Cjre4zrC.svg",
+    "src": "resources/images/key-features-icon-1.svg"
+  },
+  "resources/images/key-features-icon-2.svg": {
+    "file": "assets/key-features-icon-2-D11Pbw4Y.svg",
+    "src": "resources/images/key-features-icon-2.svg"
+  },
+  "resources/images/key-features-icon-3.svg": {
+    "file": "assets/key-features-icon-3-BIMy4wYu.svg",
+    "src": "resources/images/key-features-icon-3.svg"
+  },
+  "resources/images/key-features-icon-4.svg": {
+    "file": "assets/key-features-icon-4-CHDof5p9.svg",
+    "src": "resources/images/key-features-icon-4.svg"
+  },
+  "resources/images/key-features-icon-5.svg": {
+    "file": "assets/key-features-icon-5-BfpfohVD.svg",
+    "src": "resources/images/key-features-icon-5.svg"
+  },
+  "resources/images/key-features-icon-6.svg": {
+    "file": "assets/key-features-icon-6-CAb5JZKm.svg",
+    "src": "resources/images/key-features-icon-6.svg"
+  },
+  "resources/images/layers-three-01.svg": {
+    "file": "assets/layers-three-01-Z4CITtgj.svg",
+    "src": "resources/images/layers-three-01.svg"
+  },
+  "resources/images/line-chart-up-02.svg": {
+    "file": "assets/line-chart-up-02-D1F4ZB0d.svg",
+    "src": "resources/images/line-chart-up-02.svg"
+  },
+  "resources/images/logo.png": {
+    "file": "assets/logo-D5W0OCbs.png",
+    "src": "resources/images/logo.png"
+  },
+  "resources/images/nidavellir-image.svg": {
+    "file": "assets/nidavellir-image-Di4JPgVn.svg",
+    "src": "resources/images/nidavellir-image.svg"
+  },
+  "resources/images/register-icon.svg": {
+    "file": "assets/register-icon-Dc5ElRli.svg",
+    "src": "resources/images/register-icon.svg"
+  },
+  "resources/images/section-2-background-mobile.svg": {
+    "file": "assets/section-2-background-mobile-BS7dev6h.svg",
+    "src": "resources/images/section-2-background-mobile.svg"
+  },
+  "resources/images/section-2-background.jpg": {
+    "file": "assets/section-2-background-D00aMhZV.jpg",
+    "src": "resources/images/section-2-background.jpg"
+  },
+  "resources/images/section-2-background.svg": {
+    "file": "assets/section-2-background-KZHDiVrA.svg",
+    "src": "resources/images/section-2-background.svg"
+  },
+  "resources/images/section-3-background-bottom.png": {
+    "file": "assets/section-3-background-bottom-BVAl3igI.png",
+    "src": "resources/images/section-3-background-bottom.png"
+  },
+  "resources/images/section-3-background-bottom.svg": {
+    "file": "assets/section-3-background-bottom-DsFbege2.svg",
+    "src": "resources/images/section-3-background-bottom.svg"
+  },
+  "resources/images/section-3-background-top.svg": {
+    "file": "assets/section-3-background-top-CrZ79Lj7.svg",
+    "src": "resources/images/section-3-background-top.svg"
+  },
+  "resources/images/small-icon-1.svg": {
+    "file": "assets/small-icon-1-DXQQNgKT.svg",
+    "src": "resources/images/small-icon-1.svg"
+  },
+  "resources/images/small-icon-2.svg": {
+    "file": "assets/small-icon-2-LwYSZAbF.svg",
+    "src": "resources/images/small-icon-2.svg"
+  },
   "resources/js/app.js": {
     "file": "assets/app-CAfiGrHm.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
+  },
+  "resources/videos/background.mp4": {
+    "file": "assets/background-CPkW0ds3.mp4",
+    "src": "resources/videos/background.mp4"
   }
 }
