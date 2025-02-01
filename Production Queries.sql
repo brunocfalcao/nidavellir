@@ -61,8 +61,8 @@ select positions.* from positions, exchange_symbols, symbols, quotes where
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    and symbols.token = 'UNI'
-    and positions.status in ('closed', 'new')
+    and symbols.token = 'AXS'
+    and positions.status in ('closed')
 # --- Ordering
     order by id desc;
 
@@ -73,9 +73,8 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    and symbols.token = 'UNI'
-    and positions.status in ('closed', 'new')
-    and positions.id = 1382
-# --- Ordering
+    and symbols.token = 'AXS'
+    and positions.status in ('active')
+    #and positions.id = 1382
+# --- Your Ordering
     order by id desc;
-
