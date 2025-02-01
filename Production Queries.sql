@@ -58,5 +58,24 @@ group by positions.id order by positions.direction;
 # --- Positions query with any context you want.
 select positions.* from positions, exchange_symbols, symbols, quotes where
 	positions.exchange_symbol_id = exchange_symbols.id
-    and positions.quote_id = quotes.id
-    and 
+    and exchange_symbols.quote_id = quotes.id
+    and exchange_symbols.symbol_id = symbols.id
+# --- Your filters
+    and symbols.token = 'UNI'
+    and positions.status in ('closed', 'new')
+# --- Ordering
+    order by id desc;
+
+# --- Orders query with any context you want.
+select orders.* from orders, positions, exchange_symbols, symbols, quotes where
+	orders.position_id = positions.id
+    and positions.exchange_symbol_id = exchange_symbols.id
+    and exchange_symbols.quote_id = quotes.id
+    and exchange_symbols.symbol_id = symbols.id
+# --- Your filters
+    and symbols.token = 'UNI'
+    and positions.status in ('closed', 'new')
+    and positions.id = 1382
+# --- Ordering
+    order by id desc;
+

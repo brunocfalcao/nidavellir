@@ -281,12 +281,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/brunocfalcao/mjolnir.git",
-                "reference": "23cb999b088a8ca4dbfe820e273bba7bc39e05de"
+                "reference": "5d490eb1168d507adbf819bbbf1817c391f89a69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brunocfalcao/mjolnir/zipball/23cb999b088a8ca4dbfe820e273bba7bc39e05de",
-                "reference": "23cb999b088a8ca4dbfe820e273bba7bc39e05de",
+                "url": "https://api.github.com/repos/brunocfalcao/mjolnir/zipball/5d490eb1168d507adbf819bbbf1817c391f89a69",
+                "reference": "5d490eb1168d507adbf819bbbf1817c391f89a69",
                 "shasum": ""
             },
             "require": {
@@ -337,7 +337,7 @@
                 "issues": "https://github.com/brunocfalcao/mjolnir/issues",
                 "source": "https://github.com/brunocfalcao/mjolnir/tree/master"
             },
-            "time": "2025-01-31T20:39:03+00:00"
+            "time": "2025-01-31T20:48:58+00:00"
         },
         {
             "name": "brunocfalcao/thor",
@@ -345,12 +345,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/brunocfalcao/thor.git",
-                "reference": "dd4c3a7b07bec22ce440fc716f09a12d458ff81a"
+                "reference": "e549c16216170c902bfb4838d34975949cdd2093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brunocfalcao/thor/zipball/dd4c3a7b07bec22ce440fc716f09a12d458ff81a",
-                "reference": "dd4c3a7b07bec22ce440fc716f09a12d458ff81a",
+                "url": "https://api.github.com/repos/brunocfalcao/thor/zipball/e549c16216170c902bfb4838d34975949cdd2093",
+                "reference": "e549c16216170c902bfb4838d34975949cdd2093",
                 "shasum": ""
             },
             "require": {
@@ -395,7 +395,7 @@
                 "issues": "https://github.com/brunocfalcao/thor/issues",
                 "source": "https://github.com/brunocfalcao/thor/tree/master"
             },
-            "time": "2025-01-31T20:08:04+00:00"
+            "time": "2025-02-01T08:39:33+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
