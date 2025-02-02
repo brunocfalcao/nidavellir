@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">    
-        <title>Nidavellir</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nidavellir - Win every crypto trade. On autopilot.</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nidavellir.trade/">
+    <meta property="og:title" content="Nidavellir - Win every crypto trade. On autopilot.">
+    <meta property="og:description" content="Nidavellir is a fully automated crypto trading platform designed to help you win every trade effortlessly. Start trading smarter today!">
+    <meta property="og:image" content="https://nidavellir.trade/images/social-share.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nidavellir.trade/">
+    <meta name="twitter:title" content="Nidavellir - Win every crypto trade. On autopilot.">
+    <meta name="twitter:description" content="Nidavellir is a fully automated crypto trading platform designed to help you win every trade effortlessly. Start trading smarter today!">
+    <meta name="twitter:image" content="https://nidavellir.trade/images/social-share.jpg">
+    <meta name="twitter:site" content="@YourTwitterHandle"> <!-- Replace with your Twitter handle -->
+
+    <!-- Additional Meta Tags (Optional) -->
+    <meta name="description" content="Nidavellir is a fully automated crypto trading platform designed to help you win every trade effortlessly. Start trading smarter today!">
+    <meta name="keywords" content="crypto trading, automated trading, cryptocurrency, trading platform, nidavellir, crypto autopilot">
+    <meta name="author" content="Nidavellir">
+
+    <!-- Canonical URL (Optional, but recommended) -->
+    <link rel="canonical" href="https://nidavellir.trade/">
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -35,7 +58,7 @@
                 placeholder="Enter your email...">
             <button
                 class="flex space-x-1.5 items-center rounded-full bg-white pl-3.5 pr-1.5 py-1.5 text-base font-semibold text-gray-900 hover:bg-gray-200 absolute right-2 top-2 bottom-2">
-                <span>Join wait list</span>
+                <span>Join waitlist</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                     stroke="currentColor" class="size-4">
@@ -73,7 +96,7 @@
                     <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <button type="button"
                             class="flex space-x-1.5 items-center rounded-full bg-white pl-3.5 pr-1.5 py-1.5 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-200">
-                            <span>Get started</span>
+                            <span>Join waitlist</span>
 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                                 stroke="currentColor" class="size-4">
@@ -133,7 +156,7 @@
                                 placeholder="Enter your email...">
                             <button
                                 class="flex space-x-1.5 items-center rounded-full bg-white pl-3.5 pr-1.5 py-1.5 text-base font-semibold text-gray-900 hover:bg-gray-200 absolute right-2 top-2 bottom-2">
-                                <span>Join wait list</span>
+                                <span>Join early access</span>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
                                     stroke="currentColor" class="size-4">

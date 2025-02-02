@@ -56,13 +56,13 @@ group by positions.id order by positions.direction;
 
 
 # --- Positions query with any context you want.
-select positions.* from positions, exchange_symbols, symbols, quotes where
+select symbols.token, positions.*  from positions, exchange_symbols, symbols, quotes where
 	positions.exchange_symbol_id = exchange_symbols.id
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    and symbols.token = 'AXS'
-    and positions.status in ('closed')
+    and symbols.token = 'GALA'
+    and positions.status in ('active')
 # --- Ordering
     order by id desc;
 
@@ -73,8 +73,8 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    and symbols.token = 'AXS'
-    and positions.status in ('active')
-    #and positions.id = 1382
+    #and symbols.token = 'AXS'
+    #and positions.status in ('active')
+    and positions.id = 3185
 # --- Your Ordering
     order by id desc;
