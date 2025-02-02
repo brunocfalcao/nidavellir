@@ -54,14 +54,13 @@ and orders.status in ('FILLED')
 # ---
 group by positions.id order by positions.direction;
 
-
 # --- Positions query with any context you want.
 select symbols.token, positions.*  from positions, exchange_symbols, symbols, quotes where
 	positions.exchange_symbol_id = exchange_symbols.id
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    and symbols.token = 'GALA'
+    # and symbols.token = 'GALA'
     and positions.status in ('active')
 # --- Ordering
     order by id desc;
