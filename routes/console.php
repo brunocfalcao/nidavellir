@@ -35,7 +35,7 @@ if (System::first()->can_process_scheduled_tasks) {
         ->everyTwoMinutes();
 
     Schedule::command('mjolnir:dispatch-positions')
-        ->everyMinute();
+        ->everyTwoMinutes();
 
     Schedule::command('mjolnir:update-recvwindow-safety-duration')
         ->everyFifteenMinutes();
