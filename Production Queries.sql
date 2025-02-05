@@ -62,15 +62,13 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    and symbols.token = 'TAO'
+    # and symbols.token = 'TAO'
     #and positions.direction = 'SHORT'
     and positions.status not in ('failed', 'closed')
     #and symbols.token = 'THETA'
 # --- Ordering
     order by id desc;
     
-    select * from positions where status = 'active';
-
 # --- Orders query with any context you want.
 select orders.* from orders, positions, exchange_symbols, symbols, quotes where
 	orders.position_id = positions.id
@@ -84,6 +82,4 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
 # --- Your Ordering
     order by id desc;
     
-select * from exchange_symbols;
-
-update exchange_symbols set is_upsertable = 0, is_tradeable = 0;
+select * from core_job_queue order by id desc;
