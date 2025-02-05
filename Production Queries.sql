@@ -10,9 +10,9 @@ from
 where
   quotes.id = exchange_symbols.quote_id and
 	exchange_symbols.symbol_id = symbols.id and
-  quotes.canonical = 'USDT' and 
-  is_tradeable = 1 and
-  direction is not null
+  quotes.canonical = 'USDT'
+  #and is_tradeable = 1
+  and direction is not null
 order by exchange_symbols.direction;
 
 # --- Total active position orders with status XXX 
@@ -68,6 +68,8 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
     #and symbols.token = 'THETA'
 # --- Ordering
     order by id desc;
+    
+    select * from positions where status = 'active';
 
 # --- Orders query with any context you want.
 select orders.* from orders, positions, exchange_symbols, symbols, quotes where
@@ -81,3 +83,7 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and positions.id = 3185
 # --- Your Ordering
     order by id desc;
+    
+select * from exchange_symbols;
+
+update exchange_symbols set is_upsertable = 0, is_tradeable = 0;
