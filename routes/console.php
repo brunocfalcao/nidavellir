@@ -9,7 +9,7 @@ if (! Schema::hasTable('system')) {
 }
 
 if (System::first()->can_process_scheduled_tasks) {
-    $schedule->command('mjolnir:daily-report')
+    Schedule::command('mjolnir:daily-report')
         ->timezone('GMT')
         ->dailyAt('23:55');
 
