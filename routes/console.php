@@ -9,15 +9,9 @@ if (! Schema::hasTable('system')) {
 }
 
 if (System::first()->can_process_scheduled_tasks) {
-    /*
-    If the current system time is between 01:00 AM and 07:00 AM, we don't trigger
-    */
-    /*
-    if (! now()->isBetween(now()->startOfDay()->addHours(1), now()->startOfDay()->addHours(7))) {
-        Schedule::command('mjolnir:daily-report')
-            ->hourly();
-    }
-    */
+    $schedule->command('mjolnir:daily-report')
+        ->timezone('GMT')
+        ->dailyAt('23:55');
 
     Schedule::command('mjolnir:notify-high-margin-ratio')
         ->everyFifteenMinutes();
