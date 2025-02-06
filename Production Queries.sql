@@ -13,7 +13,7 @@ where
   quotes.canonical = 'USDT'
   #and is_tradeable = 1
   and direction is not null
-order by exchange_symbols.direction;
+order by exchange_symbols.id desc;
 
 # --- Total active position orders with status XXX 
 select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction, orders.status, count(1) as 'filled_orders'
