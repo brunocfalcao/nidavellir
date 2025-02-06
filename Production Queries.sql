@@ -50,11 +50,10 @@ select positions.id, symbols.token, positions.status, symbols.category_canonical
 from exchange_symbols, symbols, positions 
 where exchange_symbols.id = positions.exchange_symbol_id
 and exchange_symbols.symbol_id = symbols.id
+# ---
 and positions.status = 'active'
 # ---
-and orders.status in ('FILLED') 
-# ---
-group by positions.id order by positions.direction;
+group by positions.id order by positions.created_at desc;
 
 # --- Positions query with any context you want.
 select symbols.token, positions.*  from positions, exchange_symbols, symbols, quotes where
@@ -81,3 +80,7 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and positions.id = 3185
 # --- Your Ordering
     order by id desc;
+    
+select * from positions where status in ('new', 'active');
+
+select * from accounts;
