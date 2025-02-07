@@ -44,7 +44,6 @@ select positions.id 'position_id', orders.* from
 # --- The total active orders (should match the same number in the exchange).
 select count(1) from orders, positions where orders.position_id = positions.id and orders.status in('NEW') and positions.status in ('new', 'active');
 
-
 # -- Get positions information
 select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction
 from exchange_symbols, symbols, positions 
@@ -80,7 +79,3 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and positions.id = 3185
 # --- Your Ordering
     order by id desc;
-    
-select * from positions where status in ('new', 'active');
-
-select * from accounts;
