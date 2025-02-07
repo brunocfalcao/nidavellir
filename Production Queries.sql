@@ -79,3 +79,9 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and positions.id = 3185
 # --- Your Ordering
     order by id desc;
+    
+select * from exchange_symbols;
+    
+select * from core_job_queue order by id desc;
+
+select * from accounts;
