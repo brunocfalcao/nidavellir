@@ -9,10 +9,6 @@ if (! Schema::hasTable('system')) {
 }
 
 if (System::first()->can_process_scheduled_tasks) {
-    Schedule::command('mjolnir:daily-report')
-        ->timezone('GMT')
-        ->dailyAt('23:55');
-
     Schedule::command('mjolnir:notify-high-margin-ratio')
         ->everyFifteenMinutes();
 
