@@ -13,7 +13,11 @@ where
   quotes.canonical = 'USDT'
   #and is_tradeable = 1
   and direction is not null
-order by exchange_symbols.id desc;
+order by exchange_symbols.direction desc;
+
+select * from exchange_symbols where symbol_information like '%XTZ%';
+
+select * from core_job_queue where class like '%Query%' and arguments like '%: 8}%' order by id desc;
 
 # --- Total active position orders with status XXX 
 select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction, orders.status, count(1) as 'filled_orders'
@@ -79,3 +83,5 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and positions.id = 3185
 # --- Your Ordering
     order by id desc;
+    
+select * from core_job_queue order by id desc;
