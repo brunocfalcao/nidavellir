@@ -15,10 +15,6 @@ where
   and direction is not null
 order by exchange_symbols.direction desc;
 
-select * from exchange_symbols where symbol_information like '%XTZ%';
-
-select * from core_job_queue where class like '%Query%' and arguments like '%: 8}%' order by id desc;
-
 # --- Total active position orders with status XXX 
 select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction, orders.status, count(1) as 'filled_orders'
 from orders, exchange_symbols, symbols, positions 
@@ -66,7 +62,7 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
 # --- Your filters
     # and symbols.token = 'TAO'
     #and positions.direction = 'SHORT'
-    and positions.status not in ('failed', 'closed')
+    and positions.status in ('new', 'active')
     #and symbols.token = 'THETA'
 # --- Ordering
     order by id desc;
@@ -83,5 +79,3 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and positions.id = 3185
 # --- Your Ordering
     order by id desc;
-    
-select * from core_job_queue order by id desc;
