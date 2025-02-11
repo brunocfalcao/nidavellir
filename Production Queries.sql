@@ -50,9 +50,11 @@ from exchange_symbols, symbols, positions
 where exchange_symbols.id = positions.exchange_symbol_id
 and exchange_symbols.symbol_id = symbols.id
 # ---
-and positions.status = 'active'
+# and positions.status = 'closed'
+# and symbols.token = 'XTZ'
+and positions.id = 10565
 # ---
-group by positions.id order by positions.created_at desc;
+order by positions.id desc;
 
 # --- Positions query with any context you want.
 select symbols.token, positions.*  from positions, exchange_symbols, symbols, quotes where
@@ -79,3 +81,7 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and positions.id = 3185
 # --- Your Ordering
     order by id desc;
+    
+select * from orders where position_id = 10564;
+
+select * from order_history where orderId = 11406345230 order by id desc;
