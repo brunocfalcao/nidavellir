@@ -15,7 +15,7 @@ where
   and direction is not null
 order by exchange_symbols.direction desc;
 
-# --- Total active position orders with status XXX 
+# --- Total filled orders by position.
 select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction, orders.status, count(1) as 'filled_orders'
 from orders, exchange_symbols, symbols, positions 
 where exchange_symbols.id = positions.exchange_symbol_id
@@ -37,22 +37,23 @@ select positions.id 'position_id', orders.* from
     and orders.position_id = positions.id
     and exchange_symbols.symbol_id = symbols.id
     # ----
-    # and symbols.token = 'TAO'
+    and symbols.token = 'QNT'
+    and positions.status = 'active'
     # ----
     order by positions.created_at desc;
     
 # --- The total active orders (should match the same number in the exchange).
 select count(1) from orders, positions where orders.position_id = positions.id and orders.status in('NEW') and positions.status in ('new', 'active');
 
-# -- Get positions information
-select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction
+# -- Get overall positions information
+select positions.id, symbols.token, positions.status, positions.last_mark_price, symbols.category_canonical, positions.direction
 from exchange_symbols, symbols, positions 
 where exchange_symbols.id = positions.exchange_symbol_id
 and exchange_symbols.symbol_id = symbols.id
 # ---
-# and positions.status = 'closed'
-# and symbols.token = 'XTZ'
-and positions.id = 10565
+and positions.status = 'active'
+#and symbols.token = 'WLD'
+# and positions.id = 10565
 # ---
 order by positions.id desc;
 
@@ -69,6 +70,8 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
 # --- Ordering
     order by id desc;
     
+select * from core_job_queue where class like '%AssessMagnetActivationJob%' order by id desc;
+    
 # --- Orders query with any context you want.
 select orders.* from orders, positions, exchange_symbols, symbols, quotes where
 	orders.position_id = positions.id
@@ -81,7 +84,3 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and positions.id = 3185
 # --- Your Ordering
     order by id desc;
-    
-select * from orders where position_id = 10564;
-
-select * from order_history where orderId = 11406345230 order by id desc;
