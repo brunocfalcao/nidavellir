@@ -51,17 +51,11 @@ from exchange_symbols, symbols, positions
 where exchange_symbols.id = positions.exchange_symbol_id
 and exchange_symbols.symbol_id = symbols.id
 # ---
- and positions.status = 'active'
-# and symbols.token = 'GALA'
+and positions.status = 'active'
+# and symbols.token = 'SOL'
 # and positions.id = 10565
 # ---
 order by positions.id desc;
-
-select * from positions where id = 11791;
-
-select * from orders where position_id = 11791;
-
-update orders set magnet_activation_price = 194.200 where id = 4629;
 
 # --- Positions query with any context you want.
 select symbols.token, positions.*  from positions, exchange_symbols, symbols, quotes where
