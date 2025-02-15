@@ -70,8 +70,6 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
 # --- Ordering
     order by id desc;
     
-select * from core_job_queue where class like '%AssessMagnetActivationJob%' order by id desc;
-    
 # --- Orders query with any context you want.
 select orders.* from orders, positions, exchange_symbols, symbols, quotes where
 	orders.position_id = positions.id
