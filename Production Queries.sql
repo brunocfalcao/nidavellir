@@ -70,6 +70,8 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
 # --- Ordering
     order by id desc;
     
+update positions set status = 'closed' where id = 12285;
+    
 # --- Orders query with any context you want.
 select orders.* from orders, positions, exchange_symbols, symbols, quotes where
 	orders.position_id = positions.id
