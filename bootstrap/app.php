@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
 
+    /*
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->reportable(static function (Throwable $e) {
             if (app()->bound('honeybadger')) {
@@ -23,6 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
         });
     })
+    */
 
     /*
     $exceptions->report(function (Throwable $e) {
