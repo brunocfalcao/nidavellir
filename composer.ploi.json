@@ -17,8 +17,7 @@
         "php": "^8.2",
         "brunocfalcao/grok": "dev-master",
         "brunocfalcao/mjolnir": "dev-master",
-        "honeybadger-io/honeybadger-laravel": "^4.4",
-        "laravel/framework": "^11.0"
+        "laravel/framework": "^12.0"
     },
     "autoload": {
         "psr-4": {
