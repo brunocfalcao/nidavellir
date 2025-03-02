@@ -11,9 +11,9 @@ where
   quotes.id = exchange_symbols.quote_id and
 	exchange_symbols.symbol_id = symbols.id and
   quotes.canonical = 'USDT'
-  #and is_tradeable = 1
+  and is_tradeable = 1
   and direction is not null
-order by exchange_symbols.direction desc;
+order by symbols.token asc;
 
 # --- Total filled orders by position.
 select positions.id, symbols.token, positions.status, symbols.category_canonical, positions.direction, orders.status, count(1) as 'filled_orders'
@@ -63,7 +63,7 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    # and symbols.token = 'TAO'
+    and symbols.token = 'AAVE'
     #and positions.direction = 'SHORT'
     and positions.status in ('new', 'active')
     #and symbols.token = 'THETA'
@@ -78,7 +78,7 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
     #and symbols.token = 'AXS'
-    #and positions.status in ('active')
-    and positions.id = 3185
+    and positions.status in ('active')
+    #and positions.id = 3185
 # --- Your Ordering
     order by id desc;

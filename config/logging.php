@@ -52,13 +52,6 @@ return [
 
     'channels' => [
 
-        'honeybadger' => [
-            'driver' => 'custom',
-            'via' => Honeybadger\HoneybadgerLaravel\HoneybadgerLogDriver::class,
-            'name' => 'honeybadger',
-            'level' => 'info',
-        ],
-
         'stack' => [
             'driver' => 'stack',
             'channels' => explode(',', env('LOG_STACK', 'single')),
