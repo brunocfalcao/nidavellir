@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8952a9a5f2f643a9d16d5eed1ce86fc7",
+    "content-hash": "4171b0d51830ff714f973af254b66de0",
     "packages": [
         {
             "name": "angle/chrono",
@@ -102,16 +102,16 @@
         },
         {
             "name": "brick/math",
-            "version": "0.12.2",
+            "version": "0.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "901eddb1e45a8e0f689302e40af871c181ecbe40"
+                "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/901eddb1e45a8e0f689302e40af871c181ecbe40",
-                "reference": "901eddb1e45a8e0f689302e40af871c181ecbe40",
+                "url": "https://api.github.com/repos/brick/math/zipball/866551da34e9a618e64a819ee1e01c20d8a588ba",
+                "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba",
                 "shasum": ""
             },
             "require": {
@@ -150,7 +150,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.12.2"
+                "source": "https://github.com/brick/math/tree/0.12.3"
             },
             "funding": [
                 {
@@ -158,26 +158,19 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-26T10:21:45+00:00"
+            "time": "2025-02-28T13:11:00+00:00"
         },
         {
             "name": "brunocfalcao/grok",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/brunocfalcao/grok.git",
-                "reference": "7acf09d5f7b784fc2696c1c6b3998cffec6b6958"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/brunocfalcao/grok/zipball/7acf09d5f7b784fc2696c1c6b3998cffec6b6958",
-                "reference": "7acf09d5f7b784fc2696c1c6b3998cffec6b6958",
-                "shasum": ""
+                "type": "path",
+                "url": "packages/nidavellir/grok",
+                "reference": "7acf09d5f7b784fc2696c1c6b3998cffec6b6958"
             },
             "require": {
                 "php": "^8.2"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -187,58 +180,8 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
                 "psr-4": {
                     "Nidavellir\\Grok\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bruno Falcão",
-                    "email": "bruno.c.falcao@brunofalcao.me",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Nidavellir Grok",
-            "homepage": "https://github.com/brunocfalcao/grok",
-            "keywords": [
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/brunocfalcao/grok/issues",
-                "source": "https://github.com/brunocfalcao/grok/tree/master"
-            },
-            "time": "2025-02-27T11:03:59+00:00"
-        },
-        {
-            "name": "brunocfalcao/laravel-helpers",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "packages/brunocfalcao/laravel-helpers",
-                "reference": "e65fd7fd28cc8ce83892ac6cb9a7e71dd719463a"
-            },
-            "require": {
-                "php": "^8.2",
-                "symfony/dom-crawler": "^6.3"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Brunocfalcao\\LaravelHelpers\\LaravelHelpersServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Brunocfalcao\\LaravelHelpers\\": "src/"
                 },
                 "files": [
                     "src/helpers.php"
@@ -254,10 +197,10 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Laravel Helpers - Swiss army knife to complement your web apps",
-            "homepage": "https://github.com/brunocfalcao/brunocfalcao/laravel-helpers",
+            "description": "Nidavellir Grok",
+            "homepage": "https://github.com/brunocfalcao/grok",
             "keywords": [
-                "brunocfalcao"
+                "php"
             ],
             "transport-options": {
                 "symlink": true,
@@ -265,18 +208,69 @@
             }
         },
         {
-            "name": "brunocfalcao/mjolnir",
+            "name": "brunocfalcao/laravel-helpers",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/brunocfalcao/mjolnir.git",
-                "reference": "397706f2a5d92c886390265566472acf047fb26b"
+                "url": "https://github.com/brunocfalcao/laravel-helpers.git",
+                "reference": "0ae7643b765aa5104a1d844dd3f532fe36de201c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brunocfalcao/mjolnir/zipball/397706f2a5d92c886390265566472acf047fb26b",
-                "reference": "397706f2a5d92c886390265566472acf047fb26b",
+                "url": "https://api.github.com/repos/brunocfalcao/laravel-helpers/zipball/0ae7643b765aa5104a1d844dd3f532fe36de201c",
+                "reference": "0ae7643b765aa5104a1d844dd3f532fe36de201c",
                 "shasum": ""
+            },
+            "require": {
+                "php": "^8.2",
+                "symfony/dom-crawler": "^6.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Brunocfalcao\\LaravelHelpers\\LaravelHelpersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Brunocfalcao\\LaravelHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bruno Falcão",
+                    "email": "bruno.c.falcao@brunofalcao.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Helpers - Swiss army knife to complement your web apps",
+            "homepage": "https://github.com/brunocfalcao/brunocfalcao/laravel-helpers",
+            "keywords": [
+                "brunocfalcao"
+            ],
+            "support": {
+                "issues": "https://github.com/brunocfalcao/laravel-helpers/issues",
+                "source": "https://github.com/brunocfalcao/laravel-helpers/tree/master"
+            },
+            "time": "2025-02-27T11:09:40+00:00"
+        },
+        {
+            "name": "brunocfalcao/mjolnir",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/nidavellir/mjolnir",
+                "reference": "397706f2a5d92c886390265566472acf047fb26b"
             },
             "require": {
                 "angle/chrono": "^1.0",
@@ -288,7 +282,6 @@
                 "predis/predis": "^2.2",
                 "ratchet/pawl": "^0.4.1"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -298,14 +291,13 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
                 "psr-4": {
                     "Nidavellir\\Mjolnir\\": "src/"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -321,30 +313,22 @@
             "keywords": [
                 "php"
             ],
-            "support": {
-                "issues": "https://github.com/brunocfalcao/mjolnir/issues",
-                "source": "https://github.com/brunocfalcao/mjolnir/tree/master"
-            },
-            "time": "2025-02-27T11:04:13+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "brunocfalcao/thor",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/brunocfalcao/thor.git",
-                "reference": "a07dd8fbca20da245c27c3f3ab81e90b4f1af2f7"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/brunocfalcao/thor/zipball/a07dd8fbca20da245c27c3f3ab81e90b4f1af2f7",
-                "reference": "a07dd8fbca20da245c27c3f3ab81e90b4f1af2f7",
-                "shasum": ""
+                "type": "path",
+                "url": "packages/nidavellir/thor",
+                "reference": "a07dd8fbca20da245c27c3f3ab81e90b4f1af2f7"
             },
             "require": {
                 "php": "^8.2"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -354,15 +338,14 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
                 "psr-4": {
                     "Nidavellir\\Thor\\": "src/",
                     "Nidavellir\\Thor\\Database\\Seeders\\": "database/seeders"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -378,11 +361,10 @@
             "keywords": [
                 "php"
             ],
-            "support": {
-                "issues": "https://github.com/brunocfalcao/thor/issues",
-                "source": "https://github.com/brunocfalcao/thor/tree/master"
-            },
-            "time": "2025-02-27T11:04:06+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1421,16 +1403,16 @@
         },
         {
             "name": "laravel-notification-channels/pushover",
-            "version": "4.1.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-notification-channels/pushover.git",
-                "reference": "da251526ce089db6e6387e495c50e41d0f16823d"
+                "reference": "68697f85a01c5f10168ad0ab05b14ef3e244cec4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/pushover/zipball/da251526ce089db6e6387e495c50e41d0f16823d",
-                "reference": "da251526ce089db6e6387e495c50e41d0f16823d",
+                "url": "https://api.github.com/repos/laravel-notification-channels/pushover/zipball/68697f85a01c5f10168ad0ab05b14ef3e244cec4",
+                "reference": "68697f85a01c5f10168ad0ab05b14ef3e244cec4",
                 "shasum": ""
             },
             "require": {
@@ -1473,7 +1455,7 @@
                 },
                 {
                     "name": "Kevin Woblick",
-                    "email": "contact@woblick.dev",
+                    "email": "mail@woblick.dev",
                     "homepage": "https://woblick.dev",
                     "role": "Developer"
                 }
@@ -1482,9 +1464,9 @@
             "homepage": "https://github.com/laravel-notification-channels/pushover",
             "support": {
                 "issues": "https://github.com/laravel-notification-channels/pushover/issues",
-                "source": "https://github.com/laravel-notification-channels/pushover/tree/4.1.0"
+                "source": "https://github.com/laravel-notification-channels/pushover/tree/4.1.1"
             },
-            "time": "2025-02-25T23:05:23+00:00"
+            "time": "2025-03-01T09:05:11+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3477,16 +3459,16 @@
         },
         {
             "name": "ramsey/collection",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/collection.git",
-                "reference": "a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5"
+                "reference": "3c5990b8a5e0b79cd1cf11c2dc1229e58e93f109"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/collection/zipball/a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5",
-                "reference": "a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5",
+                "url": "https://api.github.com/repos/ramsey/collection/zipball/3c5990b8a5e0b79cd1cf11c2dc1229e58e93f109",
+                "reference": "3c5990b8a5e0b79cd1cf11c2dc1229e58e93f109",
                 "shasum": ""
             },
             "require": {
@@ -3494,25 +3476,22 @@
             },
             "require-dev": {
                 "captainhook/plugin-composer": "^5.3",
-                "ergebnis/composer-normalize": "^2.28.3",
-                "fakerphp/faker": "^1.21",
+                "ergebnis/composer-normalize": "^2.45",
+                "fakerphp/faker": "^1.24",
                 "hamcrest/hamcrest-php": "^2.0",
-                "jangregor/phpstan-prophecy": "^1.0",
-                "mockery/mockery": "^1.5",
+                "jangregor/phpstan-prophecy": "^2.1",
+                "mockery/mockery": "^1.6",
                 "php-parallel-lint/php-console-highlighter": "^1.0",
-                "php-parallel-lint/php-parallel-lint": "^1.3",
-                "phpcsstandards/phpcsutils": "^1.0.0-rc1",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpstan/extension-installer": "^1.2",
-                "phpstan/phpstan": "^1.9",
-                "phpstan/phpstan-mockery": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.3",
-                "phpunit/phpunit": "^9.5",
-                "psalm/plugin-mockery": "^1.1",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "ramsey/coding-standard": "^2.0.3",
-                "ramsey/conventional-commits": "^1.3",
-                "vimeo/psalm": "^5.4"
+                "php-parallel-lint/php-parallel-lint": "^1.4",
+                "phpspec/prophecy-phpunit": "^2.3",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-mockery": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpunit/phpunit": "^10.5",
+                "ramsey/coding-standard": "^2.3",
+                "ramsey/conventional-commits": "^1.6",
+                "roave/security-advisories": "dev-latest"
             },
             "type": "library",
             "extra": {
@@ -3550,19 +3529,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/collection/issues",
-                "source": "https://github.com/ramsey/collection/tree/2.0.0"
+                "source": "https://github.com/ramsey/collection/tree/2.1.0"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/ramsey",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/ramsey/collection",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-12-31T21:50:55+00:00"
+            "time": "2025-03-02T04:48:29+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -7210,16 +7179,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.70.0",
+            "version": "v3.70.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e"
+                "reference": "add1b3a05256392dbad63875240041b2c0349ceb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e",
-                "reference": "2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/add1b3a05256392dbad63875240041b2c0349ceb",
+                "reference": "add1b3a05256392dbad63875240041b2c0349ceb",
                 "shasum": ""
             },
             "require": {
@@ -7301,7 +7270,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.70.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.70.1"
             },
             "funding": [
                 {
@@ -7309,7 +7278,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-22T23:30:51+00:00"
+            "time": "2025-03-01T22:05:46+00:00"
         },
         {
             "name": "jubeki/laravel-code-style",
