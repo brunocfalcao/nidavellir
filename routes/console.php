@@ -19,7 +19,7 @@ if (System::first()->can_process_scheduled_tasks) {
         ->everyFifteenMinutes();
 
     Schedule::command('mjolnir:run-integrity-checks')
-        ->everyFourMinutes();
+        ->everyFifteenMinutes();
 
     Schedule::command('mjolnir:sync-orders')
         ->everyMinute();
