@@ -270,7 +270,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/nidavellir/mjolnir",
-                "reference": "f60405f73e39b04fbbe289842bb2f61536ace8f8"
+                "reference": "20052f1915807c4ec8f71e415e141451858e5feb"
             },
             "require": {
                 "angle/chrono": "^1.0",
