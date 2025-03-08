@@ -37,11 +37,11 @@ select positions.id 'position_id', orders.* from
     and orders.position_id = positions.id
     and exchange_symbols.symbol_id = symbols.id
     # ----
-    and symbols.token = 'QNT'
+    and symbols.token = 'ENA'
     and positions.status = 'active'
     # ----
     order by positions.created_at desc;
-    
+      
 # --- The total active orders (should match the same number in the exchange).
 select count(1) from orders, positions where orders.position_id = positions.id and orders.status in('NEW') and positions.status in ('new', 'active');
 
@@ -51,7 +51,7 @@ from exchange_symbols, symbols, positions
 where exchange_symbols.id = positions.exchange_symbol_id
 and exchange_symbols.symbol_id = symbols.id
 # ---
-and positions.status = 'active'
+and positions.status in ('active', 'new')
 # and symbols.token = 'SOL'
 # and positions.id = 10565
 # ---
@@ -63,7 +63,7 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    and symbols.token = 'AAVE'
+    and symbols.token = 'LINK'
     #and positions.direction = 'SHORT'
     and positions.status in ('new', 'active')
     #and symbols.token = 'THETA'
