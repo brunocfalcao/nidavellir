@@ -15,20 +15,17 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
     })
-
     ->withExceptions(function (Exceptions $exceptions) {
-    })
-
-    /*
-    $exceptions->report(function (Throwable $e) {
-        // Notify admin users about unhandled exceptions
-        User::admin()->get()->each(function ($user) use ($e) {
-            $user->pushover(
-                message: "[Unhandled Exception] - ".$e->getMessage(),
-                title: 'Application Error',
-                applicationKey: 'nidavellir_errors'
-            );
+        $exceptions->report(function (\Throwable $e) {
+            // Notify admin users about unhandled exceptions
+            User::admin()->get()->each(function ($user) use ($e) {
+                $user->pushover(
+                    message: "[Unhandled Exception] - " . $e->getMessage(),
+                    title: 'Application Error',
+                    applicationKey: 'nidavellir_errors',
+                    additionalParameters:['priority' => 1, 'sound' => 'siren']
+                );
+            });
         });
-    });
-    */
+    })
     ->create();
