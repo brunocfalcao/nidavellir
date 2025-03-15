@@ -16,16 +16,14 @@
     "repositories": [
         {
             "type": "path",
-            "url": "packages/brunocfalcao/laravel-helpers",
+            "url": "packages/nidavellir/*",
             "options": {
                 "symlink": true
             }
-        }
-    ],
-    "repositories": [
+        },
         {
             "type": "path",
-            "url": "packages/nidavellir/*",
+            "url": "packages/brunocfalcao/laravel-helpers",
             "options": {
                 "symlink": true
             }

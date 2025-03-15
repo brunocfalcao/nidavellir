@@ -20,10 +20,12 @@ return Application::configure(basePath: dirname(__DIR__))
             // Notify admin users about unhandled exceptions
             User::admin()->get()->each(function ($user) use ($e) {
                 $user->pushover(
-                    message: "[Unhandled Exception] - " . $e->getMessage(),
+                    message: "[Unhandled Exception] - " . $e->getMessage() .
+                        " in " . $e->getFile() .
+                        " on line " . $e->getLine(),
                     title: 'Application Error',
                     applicationKey: 'nidavellir_errors',
-                    additionalParameters:['priority' => 1, 'sound' => 'siren']
+                    additionalParameters: ['priority' => 1, 'sound' => 'siren']
                 );
             });
         });
