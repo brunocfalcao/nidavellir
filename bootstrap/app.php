@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        /*
         $exceptions->report(function (\Throwable $e) {
             // Notify admin users about unhandled exceptions
             User::admin()->get()->each(function ($user) use ($e) {
@@ -29,5 +30,6 @@ return Application::configure(basePath: dirname(__DIR__))
                 );
             });
         });
+        */
     })
     ->create();
