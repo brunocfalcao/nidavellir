@@ -63,9 +63,10 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    and symbols.token = 'LINK'
+    #and symbols.token = 'TIA'
     #and positions.direction = 'SHORT'
     and positions.status in ('new', 'active')
+    #and positions.status = 'closed'
     #and symbols.token = 'THETA'
 # --- Ordering
     order by id desc;
