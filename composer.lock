@@ -261,7 +261,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/nidavellir/mjolnir",
-                "reference": "faa6745a41e7ac2c02f9087704b24bd075f3d2fe"
+                "reference": "1e186dcf644696a15762a8b62b1b19e7f5767047"
             },
             "require": {
                 "angle/chrono": "^1.0",
@@ -316,7 +316,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/nidavellir/thor",
-                "reference": "e6fee7f10d69c3d548adcccae220824e2a409ea1"
+                "reference": "41a8df93022f21a1ea063480296002eb71a5f98f"
             },
             "require": {
                 "illuminate/contracts": "^12.0",
