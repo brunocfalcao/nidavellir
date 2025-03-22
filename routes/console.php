@@ -55,8 +55,10 @@ if (System::first()->can_process_scheduled_tasks) {
     Schedule::command('mjolnir:daily-report')
         ->dailyAt('20:00');
     */
+    /*
     Schedule::command('mjolnir:daily-report')
         ->dailyAt('12:00');
+    */
 
     Schedule::command('mjolnir:daily-report')
         ->dailyAt('23:58');
