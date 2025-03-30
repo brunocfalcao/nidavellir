@@ -63,7 +63,7 @@ select symbols.token, positions.*  from positions, exchange_symbols, symbols, qu
     and exchange_symbols.quote_id = quotes.id
     and exchange_symbols.symbol_id = symbols.id
 # --- Your filters
-    #and symbols.token = 'TIA'
+    #and symbols.token = 'QNT'
     #and positions.direction = 'SHORT'
     and positions.status in ('new', 'active')
     #and positions.status = 'closed'
@@ -83,3 +83,5 @@ select orders.* from orders, positions, exchange_symbols, symbols, quotes where
     #and positions.id = 3185
 # --- Your Ordering
     order by id desc;
+    
+update positions set status = 'failed' where id in (305,304,303) limit 3;
