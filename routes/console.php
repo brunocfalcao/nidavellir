@@ -22,7 +22,7 @@ if (System::first()->can_process_scheduled_tasks) {
         ->everyFifteenMinutes();
 
     Schedule::command('mjolnir:sync-orders')
-        ->everyMinute();
+        ->everyTwoMinutes();
 
     Schedule::command('mjolnir:dispatch-positions')
         ->everyTwoMinutes();
